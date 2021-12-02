@@ -59,7 +59,6 @@ function SignInScreen(props) {
         showIndicator(false);
     };
 
-
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 

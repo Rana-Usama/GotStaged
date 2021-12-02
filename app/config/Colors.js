@@ -1,6 +1,7 @@
 export default {
     primary: "#DD1219",
     grey: "#d5d5d5",
+    twoButtons: '#F5F5F5',
     blue: '#3A82FF',
     darkGrey: '#707070',
     inputFieldBorder: "#393939",
