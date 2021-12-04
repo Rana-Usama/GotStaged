@@ -66,6 +66,49 @@ function HomeScreen(props) {
             subTitle: 'Dominic Carver',
         }
     ]
+    const SubsCartdata = [
+        {
+            thumbnailSource: require('../../assets/images/sc1.jpg'),
+            dpImageSource: require('../../assets/images/h5.png'),
+            views: '4.5M',
+            time: '10:43',
+            mainTitle: 'Grounded',
+            subTitle: 'Zen Watt',
+            duration: '2 hours ago',
+        },
+        {
+            thumbnailSource: require('../../assets/images/sc2.png'),
+            dpImageSource: require('../../assets/images/dp3.png'),
+            views: '1.8M',
+            time: '07:15',
+            mainTitle: 'Healing',
+            subTitle: 'Shane Martinez',
+            duration: '3 days ago',
+        },
+    ]
+
+    const subsCartData = [
+        {
+            imageSource: require('../../assets/images/h1.png'),
+            name: 'MelodySheep',
+        },
+        {
+            imageSource: require('../../assets/images/h2.png'),
+            name: 'Sami Yusuf',
+        },
+        {
+            imageSource: require('../../assets/images/h3.png'),
+            name: 'Amber Joe',
+        },
+        {
+            imageSource: require('../../assets/images/h4.png'),
+            name: 'Soothing Rel',
+        },
+        {
+            imageSource: require('../../assets/images/h5.png'),
+            name: 'Zen Watt',
+        },
+    ]
 
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
@@ -107,122 +150,204 @@ function HomeScreen(props) {
             <ScrollView style={{ flex: 1, width: '100%' }} >
                 <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(1) }}>
 
-                    {cartData.map((item, i) => (
-                        <View key={i} style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                            {i == 2 ?
+                    {active == '1' ?
 
-                                <View style={{ width: '100%' }}>
+                        // Feed
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(1) }}>
 
-                                    {/* Rising talent Text and horizental scroll */}
-                                    <View style={{ alignSelf: 'center', marginTop: RFPercentage(3), flexDirection: 'row', width: '90%', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                        <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '600' }}>
-                                            Rising Talent
-                                        </Text>
-                                        {/* menue */}
-                                        <TouchableOpacity activeOpacity={0.5} style={{ position: 'absolute', right: 0, flexDirection: 'row' }}>
-                                            <View style={styles.dots} />
-                                            <View style={[styles.dots, { marginLeft: RFPercentage(0.4) }]} />
-                                            <View style={[styles.dots, { marginLeft: RFPercentage(0.4) }]} />
-                                        </TouchableOpacity>
-                                    </View>
+                            {cartData.map((item, i) => (
+                                <View key={i} style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                                    {i == 2 ?
 
-                                    {/* Horizental Scrolling carts */}
+                                        <View style={{ width: '100%' }}>
 
-                                    <ScrollView horizontal={true} style={{ marginTop: RFPercentage(3), width: '100%', backgroundColor: Colors.white }}>
-                                        <View style={{ width: "70%", flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                            <View style={{ marginLeft: RFPercentage(2), marginBottom: RFPercentage(3), width: '100%', alignSelf: 'center' }}>
+                                            {/* Rising talent Text and horizental scroll */}
+                                            <View style={{ alignSelf: 'center', marginTop: RFPercentage(3), flexDirection: 'row', width: '90%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                                <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '600' }}>
+                                                    Rising Talent
+                                                </Text>
+                                                {/* menue */}
+                                                <TouchableOpacity activeOpacity={0.5} style={{ position: 'absolute', right: 0, flexDirection: 'row' }}>
+                                                    <View style={styles.dots} />
+                                                    <View style={[styles.dots, { marginLeft: RFPercentage(0.4) }]} />
+                                                    <View style={[styles.dots, { marginLeft: RFPercentage(0.4) }]} />
+                                                </TouchableOpacity>
+                                            </View>
 
-                                                <View style={{ marginTop: RFPercentage(-5), flexDirection: 'row', width: '90%', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                                    {horizentalCartdata.map((item, i) => (
-                                                        <View key={i} style={{ marginLeft: !i == 0 ? RFPercentage(2) : 0, width: '50%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                            {/* Horizental Scrolling carts */}
 
-                                                            {/*Thumbnail of vedio */}
-                                                            <ImageBackground style={{ overflow: 'hidden', borderRadius: RFPercentage(2), marginTop: RFPercentage(5), alignSelf: 'center', width: '100%', height: RFPercentage(22) }} source={item.thumbnailSource}>
-                                                                {/* Views and eye icon */}
-                                                                <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(2), left: RFPercentage(2), borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
-                                                                    {/* empty view for background opacity */}
-                                                                    <View style={{ borderRadius: RFPercentage(3), position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.1)" }} />
-                                                                    <Image style={{ width: RFPercentage(2.3), height: RFPercentage(1.8) }} source={require('../../assets/images/whiteeye.png')} />
-                                                                    <Text style={{ fontSize: RFPercentage(1.6), color: Colors.white, marginLeft: RFPercentage(0.8), fontWeight: '800' }}>
-                                                                        {item.views}
-                                                                    </Text>
-                                                                </View>
-                                                            </ImageBackground>
+                                            <ScrollView horizontal={true} style={{ marginTop: RFPercentage(3), width: '100%', backgroundColor: Colors.white }}>
+                                                <View style={{ width: "70%", flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                                    <View style={{ marginLeft: RFPercentage(2), marginBottom: RFPercentage(3), width: '100%', alignSelf: 'center' }}>
 
-                                                            {/* Page details with image */}
-                                                            <View style={{ marginTop: RFPercentage(1.6), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                                                {/* DP Image */}
-                                                                <TouchableOpacity activeOpacity={0.5}>
-                                                                    <Image style={{ width: RFPercentage(5), height: RFPercentage(5) }} source={item.dpImageSource} />
-                                                                </TouchableOpacity>
-                                                                {/* Details */}
-                                                                <View style={{ marginLeft: RFPercentage(1.2) }}>
-                                                                    <Text style={{ opacity: 0.5, fontWeight: '600', fontSize: RFPercentage(1.6) }}>
-                                                                        {item.mainTitle}
-                                                                    </Text>
-                                                                    <View style={{ marginTop: RFPercentage(0.3), flexDirection: 'row' }}>
-                                                                        <Text style={{ opacity: 0.6, color: '#707070', fontSize: RFPercentage(1.5) }}>
-                                                                            {item.subTitle}
-                                                                        </Text>
+                                                        <View style={{ marginTop: RFPercentage(-5), flexDirection: 'row', width: '90%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                                            {horizentalCartdata.map((item, i) => (
+                                                                <View key={i} style={{ marginLeft: !i == 0 ? RFPercentage(2) : 0, width: '50%', justifyContent: 'flex-start', alignItems: 'center' }}>
+
+                                                                    {/*Thumbnail of vedio */}
+                                                                    <ImageBackground style={{ overflow: 'hidden', borderRadius: RFPercentage(2), marginTop: RFPercentage(5), alignSelf: 'center', width: '100%', height: RFPercentage(22) }} source={item.thumbnailSource}>
+                                                                        {/* Views and eye icon */}
+                                                                        <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(2), left: RFPercentage(2), borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
+                                                                            {/* empty view for background opacity */}
+                                                                            <View style={{ borderRadius: RFPercentage(3), position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.1)" }} />
+                                                                            <Image style={{ width: RFPercentage(2.3), height: RFPercentage(1.8) }} source={require('../../assets/images/whiteeye.png')} />
+                                                                            <Text style={{ fontSize: RFPercentage(1.6), color: Colors.white, marginLeft: RFPercentage(0.8), fontWeight: '800' }}>
+                                                                                {item.views}
+                                                                            </Text>
+                                                                        </View>
+                                                                    </ImageBackground>
+
+                                                                    {/* Page details with image */}
+                                                                    <View style={{ marginTop: RFPercentage(1.6), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                                                        {/* DP Image */}
+                                                                        <TouchableOpacity activeOpacity={0.5}>
+                                                                            <Image style={{ width: RFPercentage(5), height: RFPercentage(5) }} source={item.dpImageSource} />
+                                                                        </TouchableOpacity>
+                                                                        {/* Details */}
+                                                                        <View style={{ marginLeft: RFPercentage(1.2) }}>
+                                                                            <Text style={{ opacity: 0.5, fontWeight: '600', fontSize: RFPercentage(1.6) }}>
+                                                                                {item.mainTitle}
+                                                                            </Text>
+                                                                            <View style={{ marginTop: RFPercentage(0.3), flexDirection: 'row' }}>
+                                                                                <Text style={{ opacity: 0.6, color: '#707070', fontSize: RFPercentage(1.5) }}>
+                                                                                    {item.subTitle}
+                                                                                </Text>
+                                                                            </View>
+                                                                        </View>
                                                                     </View>
                                                                 </View>
-                                                            </View>
+                                                            ))}
                                                         </View>
-                                                    ))}
+
+                                                    </View>
                                                 </View>
+                                            </ScrollView>
 
+                                        </View> : null
+                                    }
+
+                                    <View key={i} style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }}>
+
+                                        {/*Thumbnail of vedio */}
+                                        <ImageBackground style={{ overflow: 'hidden', borderRadius: RFPercentage(2), marginTop: RFPercentage(5), alignSelf: 'center', width: '100%', height: RFPercentage(30) }} source={item.thumbnailSource}>
+                                            <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(2), left: RFPercentage(2), backgroundColor: Colors.darkGrey2, borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
+                                                <Image style={{ width: RFPercentage(2.3), height: RFPercentage(1.8) }} source={require('../../assets/images/whiteeye.png')} />
+                                                <Text style={{ fontSize: RFPercentage(1.6), color: Colors.white, marginLeft: RFPercentage(0.8), fontWeight: '800' }}>
+                                                    {item.views}
+                                                </Text>
                                             </View>
-                                        </View>
-                                    </ScrollView>
-
-                                </View> : null
-                            }
-
-                            <View key={i} style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }}>
-
-                                {/*Thumbnail of vedio */}
-                                <ImageBackground style={{ overflow: 'hidden', borderRadius: RFPercentage(2), marginTop: RFPercentage(5), alignSelf: 'center', width: '100%', height: RFPercentage(30) }} source={item.thumbnailSource}>
-                                    <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(2), left: RFPercentage(2), backgroundColor: Colors.darkGrey2, borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
-                                        <Image style={{ width: RFPercentage(2.3), height: RFPercentage(1.8) }} source={require('../../assets/images/whiteeye.png')} />
-                                        <Text style={{ fontSize: RFPercentage(1.6), color: Colors.white, marginLeft: RFPercentage(0.8), fontWeight: '800' }}>
-                                            {item.views}
-                                        </Text>
-                                    </View>
-                                    <TouchableOpacity activeOpacity={0.4} style={{ position: 'absolute', right: RFPercentage(2), top: RFPercentage(2) }}>
-                                        <Image source={require("../../assets/images/dots.png")} />
-                                    </TouchableOpacity>
-                                    <View style={{ flexDirection: 'row', position: 'absolute', bottom: RFPercentage(2), right: RFPercentage(2), backgroundColor: Colors.darkGrey2, borderRadius: RFPercentage(1), justifyContent: 'center', alignItems: 'center', width: RFPercentage(11), height: RFPercentage(3.6) }}>
-                                        <Text style={{ color: Colors.white, fontSize: RFPercentage(1.5), fontWeight: '600' }}>
-                                            {item.time}
-                                        </Text>
-                                    </View>
-                                </ImageBackground>
-
-                                {/* Page details with image */}
-
-                                <View style={{ marginTop: RFPercentage(2.8), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                    <TouchableOpacity activeOpacity={0.5}>
-                                        <Image style={{ width: RFPercentage(6), height: RFPercentage(6) }} source={item.dpImageSource} />
-                                    </TouchableOpacity>
-                                    <View style={{ marginLeft: RFPercentage(2) }}>
-                                        <Text style={{ fontWeight: '600', fontSize: RFPercentage(1.9) }}>
-                                            {item.mainTitle}
-                                        </Text>
-                                        <View style={{ marginTop: RFPercentage(0.8), flexDirection: 'row' }}>
-                                            <Text style={{ color: '#707070', fontSize: RFPercentage(1.7) }}>
-                                                {item.subTitle}
-                                            </Text>
-                                            <View style={{ marginLeft: RFPercentage(2), alignSelf: 'center', backgroundColor: '#707070', width: RFPercentage(0.7), height: RFPercentage(0.7), borderRadius: RFPercentage(10) }}>
+                                            <TouchableOpacity activeOpacity={0.4} style={{ position: 'absolute', right: RFPercentage(2), top: RFPercentage(2) }}>
+                                                <Image source={require("../../assets/images/dots.png")} />
+                                            </TouchableOpacity>
+                                            <View style={{ flexDirection: 'row', position: 'absolute', bottom: RFPercentage(2), right: RFPercentage(2), backgroundColor: Colors.darkGrey2, borderRadius: RFPercentage(1), justifyContent: 'center', alignItems: 'center', width: RFPercentage(11), height: RFPercentage(3.6) }}>
+                                                <Text style={{ color: Colors.white, fontSize: RFPercentage(1.5), fontWeight: '600' }}>
+                                                    {item.time}
+                                                </Text>
                                             </View>
-                                            <Text style={{ marginLeft: RFPercentage(1), color: '#707070', fontSize: RFPercentage(1.7) }}>
-                                                {item.duration}
-                                            </Text>
+                                        </ImageBackground>
+
+                                        {/* Page details with image */}
+
+                                        <View style={{ marginTop: RFPercentage(2.8), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                            <TouchableOpacity activeOpacity={0.5}>
+                                                <Image style={{ width: RFPercentage(6), height: RFPercentage(6) }} source={item.dpImageSource} />
+                                            </TouchableOpacity>
+                                            <View style={{ marginLeft: RFPercentage(2) }}>
+                                                <Text style={{ fontWeight: '600', fontSize: RFPercentage(1.9) }}>
+                                                    {item.mainTitle}
+                                                </Text>
+                                                <View style={{ marginTop: RFPercentage(0.8), flexDirection: 'row' }}>
+                                                    <Text style={{ color: '#707070', fontSize: RFPercentage(1.7) }}>
+                                                        {item.subTitle}
+                                                    </Text>
+                                                    <View style={{ marginLeft: RFPercentage(2), alignSelf: 'center', backgroundColor: '#707070', width: RFPercentage(0.7), height: RFPercentage(0.7), borderRadius: RFPercentage(10) }}>
+                                                    </View>
+                                                    <Text style={{ marginLeft: RFPercentage(1), color: '#707070', fontSize: RFPercentage(1.7) }}>
+                                                        {item.duration}
+                                                    </Text>
+                                                </View>
+                                            </View>
                                         </View>
                                     </View>
                                 </View>
-                            </View>
+                            ))
+                            }
+
                         </View>
-                    ))
+
+                        :
+
+                        // Subscription
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(1) }}>
+
+                            {/*Horizental Profiles Cart */}
+                            <View style={{ marginLeft: RFPercentage(5), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
+
+                                    {subsCartData.map((item, i) => (
+                                        <TouchableOpacity key={i} activeOpacity={0.8} style={{ marginBottom: RFPercentage(3), marginLeft: !i == 0 ? RFPercentage(2.5) : 0, justifyContent: 'center', alignItems: 'center' }}>
+                                            <Image style={{ width: RFPercentage(10), height: RFPercentage(10) }} source={item.imageSource} />
+                                            <Text style={{ marginTop: RFPercentage(1.6), fontSize: RFPercentage(1.6), color: "#707070" }}>
+                                                {item.name}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    ))}
+                                </ScrollView>
+                            </View>
+
+                            {SubsCartdata.map((item, i) => (
+
+                                <View key={i} style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }}>
+
+                                    {/*Thumbnail of vedio */}
+                                    <ImageBackground style={{ overflow: 'hidden', borderRadius: RFPercentage(2), marginTop: RFPercentage(5), alignSelf: 'center', width: '100%', height: RFPercentage(30) }} source={item.thumbnailSource}>
+                                        <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(2), left: RFPercentage(2), borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
+                                            {/* empty view for background opacity */}
+                                            <View style={{ borderRadius: RFPercentage(3), position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.1)" }} />
+                                            <Image style={{ width: RFPercentage(2.3), height: RFPercentage(1.8) }} source={require('../../assets/images/whiteeye.png')} />
+                                            <Text style={{ fontSize: RFPercentage(1.6), color: Colors.white, marginLeft: RFPercentage(0.8), fontWeight: '800' }}>
+                                                {item.views}
+                                            </Text>
+                                        </View>
+                                        <TouchableOpacity activeOpacity={0.4} style={{ position: 'absolute', right: RFPercentage(2), top: RFPercentage(2) }}>
+                                            <Image source={require("../../assets/images/dots.png")} />
+                                        </TouchableOpacity>
+                                        <View style={{ flexDirection: 'row', position: 'absolute', bottom: RFPercentage(2), right: RFPercentage(2), borderRadius: RFPercentage(1), justifyContent: 'center', alignItems: 'center', width: RFPercentage(11), height: RFPercentage(3.6) }}>
+                                            {/* empty view for background opacity */}
+                                            <View style={{ borderRadius: RFPercentage(3), position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.1)" }} />
+                                            <Text style={{ color: Colors.white, fontSize: RFPercentage(1.5), fontWeight: '600' }}>
+                                                {item.time}
+                                            </Text>
+                                        </View>
+                                    </ImageBackground>
+
+                                    {/* Page details with image */}
+
+                                    <View style={{ marginTop: RFPercentage(2.8), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                        <TouchableOpacity activeOpacity={0.5}>
+                                            <Image style={{ width: RFPercentage(6), height: RFPercentage(6) }} source={item.dpImageSource} />
+                                        </TouchableOpacity>
+                                        <View style={{ marginLeft: RFPercentage(2) }}>
+                                            <Text style={{ fontWeight: '600', fontSize: RFPercentage(1.9) }}>
+                                                {item.mainTitle}
+                                            </Text>
+                                            <View style={{ marginTop: RFPercentage(0.8), flexDirection: 'row' }}>
+                                                <Text style={{ color: '#707070', fontSize: RFPercentage(1.7) }}>
+                                                    {item.subTitle}
+                                                </Text>
+                                                <View style={{ marginLeft: RFPercentage(2), alignSelf: 'center', backgroundColor: '#707070', width: RFPercentage(0.7), height: RFPercentage(0.7), borderRadius: RFPercentage(10) }}>
+                                                </View>
+                                                <Text style={{ marginLeft: RFPercentage(1), color: '#707070', fontSize: RFPercentage(1.7) }}>
+                                                    {item.duration}
+                                                </Text>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </View>
+
+                            ))}
+
+                        </View>
                     }
 
                     {/* for margin */}

@@ -16,6 +16,7 @@ function InputField({
     borderColor = Colors.white,
     borderWidth = RFPercentage(0),
     fontFamily = null,
+    placeholderAtCenter = true,
     leftImageSource = "",
     placeholderColor = "#B4B6B8",
     borderRadius = RFPercentage(1),
@@ -41,11 +42,11 @@ function InputField({
     return (
         <View style={{ alignItems: "center", justifyContent: "center", flexDirection: "row", backgroundColor: backgroundColor, borderColor: borderColor, borderWidth: borderWidth, width: width, height: height, borderRadius: borderRadius, marginVertical: RFPercentage(0.7), }} >
             {leftIconName ? (
-                <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', position: "absolute", right: RFPercentage(3), width: RFPercentage(5), height: RFPercentage(5), borderRadius: RFPercentage(1.2) }}>
+                <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', position: "absolute", right: RFPercentage(1), width: RFPercentage(5), height: RFPercentage(5), borderRadius: RFPercentage(1.2) }}>
                     <MaterialIcons
-                        color={Colors.darkGrey}
+                        color={Colors.black}
                         size={RFPercentage(3.7)}
-                        // style={{ right: RFPercentage(1) }}
+                        style={{ opacity: 0.5 }}
                         name={leftIconName}
                     />
                 </TouchableOpacity>
@@ -64,7 +65,7 @@ function InputField({
                 keyboardType={keyboardType}
                 secureTextEntry={secure && !eyeIcon}
                 textAlign={textCenter}
-                style={{ marginLeft: RFPercentage(16), color: color, alignSelf: "center", fontFamily: fontFamily, fontSize: fontSize, width: leftIconName ? "85%" : "90%" }}
+                style={{ marginLeft: placeholderAtCenter ? RFPercentage(16) : RFPercentage(0), color: color, alignSelf: "center", fontFamily: fontFamily, fontSize: fontSize, width: leftIconName ? "85%" : "90%" }}
                 {...otherProps}
             />
 
