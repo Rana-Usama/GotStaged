@@ -12,12 +12,13 @@ function InputField({
     onTouchStart = () => { },
     onTouchEnd = () => { },
     placeholder,
+    atStartPlaceholder = false,
     handleFeild,
     borderColor = Colors.white,
     borderWidth = RFPercentage(0),
     fontFamily = null,
     placeholderAtCenter = true,
-    leftImageSource = "",
+    leftImageSource = null,
     placeholderColor = "#B4B6B8",
     borderRadius = RFPercentage(1),
     backgroundColor = Colors.white,
@@ -65,7 +66,7 @@ function InputField({
                 keyboardType={keyboardType}
                 secureTextEntry={secure && !eyeIcon}
                 textAlign={textCenter}
-                style={{ marginLeft: placeholderAtCenter ? RFPercentage(16) : RFPercentage(0), color: color, alignSelf: "center", fontFamily: fontFamily, fontSize: fontSize, width: leftIconName ? "85%" : "90%" }}
+                style={{ marginBottom: atStartPlaceholder ? RFPercentage(12) : RFPercentage(0), marginLeft: placeholderAtCenter ? RFPercentage(16) : RFPercentage(0), color: color, alignSelf: "center", fontFamily: fontFamily, fontSize: fontSize, width: leftIconName ? "85%" : "90%" }}
                 {...otherProps}
             />
 
