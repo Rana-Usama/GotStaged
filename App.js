@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName="NotificationsScreen">
+      <Stack.Navigator headerMode="none" initialRouteName="HomeScreen">
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
         <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
         <Stack.Screen name="FollowersScreen" component={FollowersScreen} />

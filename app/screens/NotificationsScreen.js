@@ -8,10 +8,10 @@ import BottomTab from '../components/common/BottomTab';
 
 //config
 import Colors from '../config/Colors';
+import NotificationsCard from './../components/common/NotificationsCard';
 
 function NotificationsScreen(props) {
 
-    const [buttons, setButtons] = useState(false);
 
     const carData = [
         {
@@ -23,6 +23,7 @@ function NotificationsScreen(props) {
         {
             imageSource: require('../../assets/images/f2.png'),
             title: 'AI',
+            onPress: true,
             subTitle: 'Your video is approved',
             time: '1 Hour'
         },
@@ -65,47 +66,14 @@ function NotificationsScreen(props) {
                     {/* Cart */}
 
                     {carData.map((item, i) => (
+                        <View key={i} style={{ marginTop: i == 0 ? RFPercentage(5) : RFPercentage(2), width: '100%', }}>
 
-                        <View key={i} style={{ justifyContent: 'center', marginTop: i == 0 ? RFPercentage(5) : RFPercentage(1.5), width: '90%', height: RFPercentage(14), backgroundColor: Colors.twoButtons, borderRadius: RFPercentage(2), alignSelf: 'center' }}>
+                            <NotificationsCard onPressButtons={item.onPress} imageSource={item.imageSource} Title={item.title} subTitle={item.subTitle} time={item.time} />
 
-                            <TouchableOpacity onPress={() => setButtons(true)} style={{ marginLeft: RFPercentage(3), flexDirection: 'row', width: '90%', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                {/* DP Image */}
-                                <TouchableOpacity activeOpacity={0.5}>
-                                    <Image style={{ width: RFPercentage(8), height: RFPercentage(8) }} source={item.imageSource} />
-                                </TouchableOpacity>
-                                {/* Details */}
-                                <View style={{ marginLeft: RFPercentage(1.2) }}>
-                                    <Text style={{ color: Colors.black, fontWeight: '600', fontSize: RFPercentage(1.9) }}>
-                                        {item.title}
-                                    </Text>
-                                    <View style={{ marginTop: RFPercentage(0.8), flexDirection: 'row' }}>
-                                        <Text style={{ color: '#707070', fontSize: RFPercentage(1.6) }}>
-                                            {item.subTitle}
-                                        </Text>
-                                    </View>
-                                </View>
-                                <Text style={{ color: "#707070", position: 'absolute', right: 0, fontSize: RFPercentage(1.7) }}>
-                                    {item.time}
-                                </Text>
-                            </TouchableOpacity>
-                            {/* {buttons ?
-                                <View style={{ alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2) }}>
-                                    <TouchableOpacity onPress={() => setButtons(false)} style={{ justifyContent: 'center', alignItems: 'center', width: RFPercentage(20), height: RFPercentage(6), borderRadius: RFPercentage(1), backgroundColor: Colors.twoButtons, borderColor: "#757575", borderWidth: RFPercentage(0.1) }}>
-                                        <Text style={{ color: '#757575', fontSize: RFPercentage(1.8) }}>
-                                            Cancel
-                                        </Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => setButtons(false)} style={{ marginLeft: RFPercentage(2), justifyContent: 'center', alignItems: 'center', width: RFPercentage(20), borderRadius: RFPercentage(1), height: RFPercentage(6), backgroundColor: Colors.primary, borderColor: "#757575" }}>
-                                        <Text style={{ color: Colors.white, fontSize: RFPercentage(1.8) }}>
-                                            Post
-                                        </Text>
-                                    </TouchableOpacity>
-                                </View>
-                                :
-                                null
-                            } */}
                         </View>
+
                     ))}
+
                     <View style={{ marginBottom: RFPercentage(15) }} />
 
                 </View>
