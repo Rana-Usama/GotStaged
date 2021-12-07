@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Image, View, Text, TouchableOpacity } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { RadioButton } from 'react-native-paper';
+import { Zocial } from '@expo/vector-icons';
 
 //components
 import Screen from './../components/Screen';
@@ -20,12 +21,12 @@ function SignInScreen(props) {
     const [inputField, SetInputField] = useState([
         {
             placeholder: "Email Address",
-            leftImage: require('../../assets/images/mail.png'),
+            leftImage: "email",
             value: "",
         },
         {
             placeholder: "Password",
-            leftImage: require('../../assets/images/lock.png'),
+            // leftImage: require('../../assets/images/lock.png'),
             secure: true,
             value: ""
         },
@@ -78,12 +79,12 @@ function SignInScreen(props) {
             <View style={{ width: '80%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: RFPercentage(4) }}>
                 {/* Google Link */}
                 <TouchableOpacity activeOpacity={0.7} style={{ justifyContent: 'center', alignItems: 'center', width: RFPercentage(23), height: RFPercentage(6.5), borderRadius: RFPercentage(1), borderColor: Colors.blue, borderWidth: RFPercentage(0.1) }}>
-                    <Image source={require('../../assets/images/google.png')} />
+                    <Image style={{ width: RFPercentage(18), height: RFPercentage(3) }} source={require('../../assets/images/google.png')} />
                 </TouchableOpacity>
 
                 {/* Apple Link */}
                 <TouchableOpacity activeOpacity={0.7} style={{ marginLeft: RFPercentage(1.5), justifyContent: 'center', alignItems: 'center', width: RFPercentage(23), height: RFPercentage(6.5), borderRadius: RFPercentage(1), borderColor: Colors.black, borderWidth: RFPercentage(0.1) }}>
-                    <Image source={require('../../assets/images/apple.png')} />
+                    <Image style={{ width: RFPercentage(12), height: RFPercentage(3.1) }} source={require('../../assets/images/apple.png')} />
                 </TouchableOpacity>
             </View>
 
@@ -104,7 +105,8 @@ function SignInScreen(props) {
                         <InputField
                             placeholder={item.placeholder}
                             backgroundColor={Colors.white}
-                            leftImageSource={item.leftImage}
+                            // leftImageSource={item.leftImage}
+                            logoName={item.leftImage}
                             borderWidth={RFPercentage(0.1)}
                             borderColor={Colors.inputFieldBorder}
                             height={RFPercentage(8.8)}

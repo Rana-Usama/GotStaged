@@ -4,6 +4,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons, Feather } from '@expo/vector-icons';
+import { Zocial } from '@expo/vector-icons';
 
 //config
 import Colors from "../../config/Colors";
@@ -11,6 +12,7 @@ import Colors from "../../config/Colors";
 function InputField({
     onTouchStart = () => { },
     onTouchEnd = () => { },
+    logoName = '',
     placeholder,
     atStartPlaceholder = false,
     handleFeild,
@@ -53,7 +55,9 @@ function InputField({
                 </TouchableOpacity>
             ) : null}
 
-            <Image style={{ position: 'absolute', left: RFPercentage(5) }} source={leftImageSource} />
+            {/* <Image style={{ position: 'absolute', left: RFPercentage(5), width: RFPercentage(3.5), height: RFPercentage(3) }} source={leftImageSource} /> */}
+
+            <Zocial name={logoName} size={24} color="black" />
 
             <TextInput
                 placeholder={placeholder}
