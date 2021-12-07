@@ -8,6 +8,7 @@ import * as ImagePicker from 'expo-image-picker';
 import Screen from './../components/Screen';
 import MyAppButton from './../components/common/MyAppButton';
 import InputField from './../components/common/InputField';
+
 //config
 import Colors from '../config/Colors';
 
@@ -41,8 +42,6 @@ function EditProfileScreen(props) {
             setImage(result.uri);
         }
     };
-
-
 
     const [buttonRed, setButtonRed] = useState('0');
 
@@ -137,14 +136,12 @@ function EditProfileScreen(props) {
 
                             <View style={{ alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2) }}>
                                 <TouchableOpacity onPress={() => setButtonRed('1')} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '50%', height: RFPercentage(7), borderRadius: RFPercentage(1), backgroundColor: buttonRed == '1' ? Colors.primary : "#FAFAFA" }}>
-                                    {/* <Image style={{ position: 'absolute', left: RFPercentage(2), width: RFPercentage(2.5), height: RFPercentage(2.5) }} source={require('../../assets/images/male.png')} /> */}
                                     <Ionicons style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} name="ios-male-sharp" color={buttonRed == '1' ? Colors.white : Colors.black} />
                                     <Text style={{ color: buttonRed == '1' ? Colors.white : '#757575', fontSize: RFPercentage(2) }}>
                                         Male
                                     </Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setButtonRed('2')} style={{ flexDirection: 'row', marginLeft: RFPercentage(2), justifyContent: 'center', alignItems: 'center', width: '50%', borderRadius: RFPercentage(1), height: RFPercentage(7), backgroundColor: buttonRed == '2' ? Colors.primary : "#FAFAFA", borderColor: "#757575" }}>
-                                    {/* <Image style={{ position: 'absolute', left: RFPercentage(2), width: RFPercentage(2), height: RFPercentage(3) }} source={require('../../assets/images/female.png')} /> */}
                                     <Ionicons style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} name="ios-female-sharp" color={buttonRed == '2' ? Colors.white : Colors.black} />
                                     <Text style={{ color: buttonRed == '2' ? Colors.white : '#757575', fontSize: RFPercentage(2) }}>
                                         Female
