@@ -116,11 +116,11 @@ function HomeScreen(props) {
             {/* NavBar */}
 
             <ImageBackground style={{ width: '100%', height: RFPercentage(16) }} source={require('../../assets/images/back.png')}>
-                <View style={{ position: 'absolute', bottom: RFPercentage(4), width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{ position: 'absolute', bottom: RFPercentage(5.4), width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <TouchableOpacity activeOpacity={0.5} style={{ position: 'absolute', left: RFPercentage(2), }}>
                         <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2) }} source={require('../../assets/images/notification.png')} />
                     </TouchableOpacity>
-                    <Image source={require('../../assets/images/smallLogo.png')} />
+                    <Image style={{ width: RFPercentage(18), height: RFPercentage(4) }} source={require('../../assets/images/smallLogo.png')} />
                     <TouchableOpacity activeOpacity={0.5} style={{ position: 'absolute', right: RFPercentage(8), }}>
                         <Image style={{ width: RFPercentage(3.5), height: RFPercentage(2.3) }} source={require('../../assets/images/vedio.png')} />
                     </TouchableOpacity>
@@ -281,7 +281,7 @@ function HomeScreen(props) {
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(1) }}>
 
                             {/*Horizental Profiles Cart */}
-                            <View style={{ marginLeft: RFPercentage(5), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                            <View style={{ marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
                                 <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
 
                                     {subsCartData.map((item, i) => (

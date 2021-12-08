@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Image, View, Text, TouchableOpacity } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
-import { RadioButton } from 'react-native-paper';
-import { Zocial } from '@expo/vector-icons';
 
 //components
 import Screen from './../components/Screen';
@@ -21,12 +19,12 @@ function SignInScreen(props) {
     const [inputField, SetInputField] = useState([
         {
             placeholder: "Email Address",
-            leftImage: "email",
+            leftImage: require('../../assets/images/mail.png'),
             value: "",
         },
         {
             placeholder: "Password",
-            // leftImage: require('../../assets/images/lock.png'),
+            leftImage: require('../../assets/images/lock.png'),
             secure: true,
             value: ""
         },
@@ -105,8 +103,8 @@ function SignInScreen(props) {
                         <InputField
                             placeholder={item.placeholder}
                             backgroundColor={Colors.white}
-                            // leftImageSource={item.leftImage}
-                            logoName={item.leftImage}
+                            leftImageSource={item.leftImage}
+                            // logoName={item.leftImage}
                             borderWidth={RFPercentage(0.1)}
                             borderColor={Colors.inputFieldBorder}
                             height={RFPercentage(8.8)}

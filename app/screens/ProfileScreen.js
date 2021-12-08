@@ -128,7 +128,7 @@ function ProfileScreen(props) {
                 </View>
 
                 {/*First Playlists Horizental Cart */}
-                <View style={{ marginLeft: RFPercentage(5), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <View style={{ marginLeft: RFPercentage(1), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
 
                         {subsCartData.map((item, i) => (
@@ -167,7 +167,7 @@ function ProfileScreen(props) {
 
 
                 {/*First Playlists Horizental Cart */}
-                <View style={{ marginLeft: RFPercentage(5), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <View style={{ marginLeft: RFPercentage(1), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
 
                         {subsCart2Data.map((item, i) => (
@@ -202,7 +202,7 @@ function ProfileScreen(props) {
                 </View>
 
                 {/*Horizental Profiles Cart */}
-                <View style={{ marginLeft: RFPercentage(5), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <View style={{ marginLeft: RFPercentage(1), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
 
                         {subsCart3Data.map((item, i) => (
