@@ -9,27 +9,7 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 
 function MyChannelScreen(props) {
 
-    const buttonData = [
-        {
-            id: 0,
-            buttonTitle: 'My Channel'
-        },
-        {
-            id: 1,
-            buttonTitle: 'My Videos'
-        },
-        {
-            id: 2,
-            buttonTitle: 'Payments'
-        },
-        {
-            id: 3,
-            buttonTitle: 'About'
-        },
-
-    ]
-
-    const [buttonColor, setButtonColor] = useState('0')
+    const [buttons, setButtons] = useState('0');
 
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
@@ -51,17 +31,42 @@ function MyChannelScreen(props) {
 
                 {/* Buttons to navigate to different pages */}
 
-                <View style={{ width: '90%', position: 'absolute', bottom: RFPercentage(3.5), flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
-                    {buttonData.map((item, i) => (
-                        <TouchableOpacity key={i} activeOpacity={0.6} style={{ marginLeft: !i == 0 ? RFPercentage(5) : RFPercentage(0) }} >
-                            <Text style={{ color: '#707070', fontSize: RFPercentage(2.2) }}>
-                                {item.buttonTitle}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
+                <View style={{ width: '90%', position: 'absolute', bottom: RFPercentage(5), flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                    <TouchableOpacity onPress={() => setButtons('1')} activeOpacity={0.6} style={{ position: 'absolute', left: 0 }} >
+                        <Text style={{ color: buttons == '1' ? Colors.primary : '#707070', fontSize: RFPercentage(2.2) }}>
+                            My Channel
+                        </Text>
+                    </TouchableOpacity>
+                    {buttons == '1' ?
+                        <View style={{ marginBottom: RFPercentage(-6), backgroundColor: Colors.primary, width: RFPercentage(14), height: RFPercentage(0.4) }} />
+                        :
+                        null
+                    }
+
+                    <TouchableOpacity onPress={() => setButtons('2')} activeOpacity={0.6} style={{ position: 'absolute', left: RFPercentage(16) }} >
+                        <Text style={{ color: buttons == '2' ? Colors.primary : '#707070', fontSize: RFPercentage(2.2) }}>
+                            My Videos
+                        </Text>
+                    </TouchableOpacity>
+                    {buttons == '2' ?
+                        <View style={{ marginBottom: RFPercentage(-6), backgroundColor: Colors.primary, width: RFPercentage(14), height: RFPercentage(0.4) }} />
+                        :
+                        null
+                    }
+
+                    <TouchableOpacity onPress={() => setButtons('3')} activeOpacity={0.6} style={{ position: 'absolute', right: RFPercentage(10) }} >
+                        <Text style={{ color: buttons == '3' ? Colors.primary : '#707070', fontSize: RFPercentage(2.2) }}>
+                            Payments
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => setButtons('4')} activeOpacity={0.6} style={{ position: 'absolute', right: 0 }} >
+                        <Text style={{ color: buttons == '4' ? Colors.primary : '#707070', fontSize: RFPercentage(2.2) }}>
+                            About
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
-
-
             </ImageBackground>
         </Screen>
     );
