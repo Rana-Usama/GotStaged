@@ -7,6 +7,7 @@ function MyAppButton({
     onPress,
     bold = true,
     borderRadius = RFPercentage(30),
+    fontSize = RFPercentage(2.4),
     backgroundColor,
     fontFamily = null,
     padding = RFPercentage(2),
@@ -34,7 +35,7 @@ function MyAppButton({
             <Text
                 style={{
                     fontFamily: fontFamily,
-                    fontSize: RFPercentage(2.4),
+                    fontSize: fontSize,
                     color: color,
                     fontWeight: bold ? "bold" : null,
                 }}
