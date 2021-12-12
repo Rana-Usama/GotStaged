@@ -11,6 +11,7 @@ import NotificationsScreen from './app/screens/NotificationsScreen';
 import EditProfileScreen from './app/screens/EditProfileScreen';
 import ProfileScreen from './app/screens/ProfileScreen';
 import MyChannelScreen from './app/screens/MyChannelScreen';
+import StartAConcert from './app/screens/StartAConcert';
 
 const Stack = createStackNavigator();
 
@@ -18,8 +19,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName="MyChannelScreen">
+      <Stack.Navigator headerMode="none" initialRouteName="StartAConcert">
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
+        <Stack.Screen name="StartAConcert" component={StartAConcert} />
         <Stack.Screen name="MyChannelScreen" component={MyChannelScreen} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
