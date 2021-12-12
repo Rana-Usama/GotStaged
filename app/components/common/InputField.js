@@ -36,12 +36,16 @@ function InputField({
     autoFocus = false,
     searchMarginLeft = null,
     color = "black",
+    borderRightColor = null,
+    borderTopColor = null,
+    borderLeftColor = null,
+    borderBottomColor = null,
     ...otherProps
 }) {
     const [eyeIcon, setEyeIcon] = useState(false);
 
     return (
-        <View style={{ alignItems: "center", justifyContent: "center", flexDirection: "row", backgroundColor: backgroundColor, borderColor: borderColor, borderWidth: borderWidth, width: width, height: height, borderRadius: borderRadius, marginVertical: RFPercentage(0.7), }} >
+        <View style={{ alignItems: "center", justifyContent: "center", flexDirection: "row", backgroundColor: backgroundColor, borderColor: borderColor, borderWidth: borderWidth, width: width, height: height, borderRadius: borderRadius, marginVertical: RFPercentage(0.7), borderRightColor: borderRightColor, borderTopColor: borderTopColor, borderLeftColor: borderLeftColor, borderBottomColor: borderBottomColor }} >
             {leftIconName ? (
                 <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', position: "absolute", right: RFPercentage(1), width: RFPercentage(5), height: RFPercentage(5), borderRadius: RFPercentage(1.2) }}>
                     <MaterialIcons
