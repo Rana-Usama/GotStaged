@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Platform, TextInput, ScrollView } from 'react-native';
+import { View, Text, Image, Platform, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 //components
 import Screen from './../components/Screen';
 import BottomTab from './../components/common/BottomTab';
 import InputField from './../components/common/InputField';
+import MyAppButton from './../components/common/MyAppButton';
 //config
 import Colors from '../config/Colors';
-import MyAppButton from './../components/common/MyAppButton';
 
-function StartAConcert(props) {
+function PostYourVideo(props) {
 
     const [inputField, SetInputField] = useState([
         {
@@ -35,19 +36,6 @@ function StartAConcert(props) {
             title: 'Description',
             height: RFPercentage(22),
             placeholderAtCenter: false,
-            value: "",
-        },
-        {
-            placeholder: "Enter ticket price",
-            backgroundColor: Colors.white,
-            title: 'Ticket Price',
-            icon: true,
-            borderRightColor: Colors.white,
-            borderTopColor: Colors.white,
-            borderLeftColor: Colors.white,
-            borderBottomColor: Colors.newInputFieldBorder,
-            placeholderAtCenter: false,
-            height: RFPercentage(7.4),
             value: "",
         },
     ]);
@@ -82,7 +70,7 @@ function StartAConcert(props) {
             {/* Nav */}
             <View style={{ width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: RFPercentage(3) }} >
                 <Text style={{ fontSize: RFPercentage(2.7), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
-                    Start a concert
+                    Post Your Video
                 </Text>
                 <Entypo name="cross" style={{ fontSize: RFPercentage(3.5), position: 'absolute', right: 0 }} color={Colors.black} />
             </View>
@@ -150,10 +138,32 @@ function StartAConcert(props) {
                         </View>
                     ))}
                 </View>
-                <View style={{ width: "100%", alignItems: "center", marginTop: RFPercentage(4), marginBottom: RFPercentage(16) }}>
+
+                {/* Thumbnail */}
+                <View style={{ width: '90%', justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'center', marginTop: RFPercentage(2.5) }} >
+                    <Text style={{ fontSize: RFPercentage(2.5), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
+                        Thumbnail
+                    </Text>
+                </View>
+                <TouchableOpacity activeOpacity={0.6} style={{ alignSelf: 'center', marginTop: RFPercentage(-1) }} >
+                    <Image style={{ marginTop: RFPercentage(4), width: RFPercentage(45), height: RFPercentage(8) }} source={require('../../assets/images/thumbnail.png')} />
+                </TouchableOpacity>
+
+                {/* Uploads */}
+                <View style={{ width: '90%', justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'center', marginTop: RFPercentage(3.5) }} >
+                    <Text style={{ fontSize: RFPercentage(2.5), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
+                        Upload Video
+                    </Text>
+                </View>
+                <TouchableOpacity activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', width: RFPercentage(46), height: RFPercentage(8), borderRadius: RFPercentage(1), backgroundColor: '#FAFAFA', marginTop: RFPercentage(4) }}>
+                    <Feather name="upload-cloud" style={{ fontSize: RFPercentage(3.5) }} color="#909090" />
+
+                </TouchableOpacity>
+
+                <View style={{ width: "100%", alignItems: "center", marginTop: RFPercentage(6), marginBottom: RFPercentage(12) }}>
                     <MyAppButton
                         title="Submit"
-                        padding={RFPercentage(1.8)}
+                        padding={RFPercentage(1.6)}
                         // onPress={() => handleLogin()}
                         backgroundColor={Colors.primary}
                         color={Colors.white}
@@ -162,6 +172,10 @@ function StartAConcert(props) {
                         width={"90%"}
                     />
                 </View>
+
+
+
+
             </ScrollView>
 
             {/* Bottom tab */}
@@ -171,4 +185,4 @@ function StartAConcert(props) {
     );
 }
 
-export default StartAConcert;
+export default PostYourVideo;

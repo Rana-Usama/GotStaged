@@ -12,6 +12,7 @@ import EditProfileScreen from './app/screens/EditProfileScreen';
 import ProfileScreen from './app/screens/ProfileScreen';
 import MyChannelScreen from './app/screens/MyChannelScreen';
 import StartAConcert from './app/screens/StartAConcert';
+import PostYourVideo from './app/screens/PostYourVideo';
 
 const Stack = createStackNavigator();
 
@@ -19,8 +20,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName="StartAConcert">
+      <Stack.Navigator headerMode="none" initialRouteName="PostYourVideo">
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
+        <Stack.Screen name="PostYourVideo" component={PostYourVideo} />
         <Stack.Screen name="StartAConcert" component={StartAConcert} />
         <Stack.Screen name="MyChannelScreen" component={MyChannelScreen} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
