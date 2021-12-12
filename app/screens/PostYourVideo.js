@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { View, Text, Image, Platform, TextInput, ScrollView, TouchableOpacity } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, Platform, Modal, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
+import { LinearGradient } from 'expo-linear-gradient';
 
 //components
 import Screen from './../components/Screen';
@@ -15,7 +17,39 @@ import MyAppButton from './../components/common/MyAppButton';
 //config
 import Colors from '../config/Colors';
 
+const { height } = Dimensions.get("window");
+
 function PostYourVideo(props) {
+
+    const [pickerModel, setPickerModel] = useState(false);
+
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            if (Platform.OS !== 'web') {
+                const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                if (status !== 'granted') {
+                    alert('Sorry, we need camera roll permissions to make this work!');
+                }
+            }
+        })();
+    }, []);
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
 
     const [inputField, SetInputField] = useState([
         {
@@ -62,7 +96,6 @@ function PostYourVideo(props) {
             color={"grey"}
         />
     }
-
 
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
@@ -145,8 +178,14 @@ function PostYourVideo(props) {
                         Thumbnail
                     </Text>
                 </View>
-                <TouchableOpacity activeOpacity={0.6} style={{ alignSelf: 'center', marginTop: RFPercentage(-1) }} >
-                    <Image style={{ marginTop: RFPercentage(4), width: RFPercentage(45), height: RFPercentage(8) }} source={require('../../assets/images/thumbnail.png')} />
+                <TouchableOpacity onPress={pickImage} activeOpacity={0.6} style={{ alignSelf: 'center', marginTop: RFPercentage(-1) }} >
+
+                    {image ?
+                        <Image source={{ uri: image }} style={{ marginTop: RFPercentage(3), width: RFPercentage(45), height: RFPercentage(25), borderRadius: RFPercentage(2) }} />
+                        :
+                        <Image style={{ marginTop: RFPercentage(4), width: RFPercentage(45), height: RFPercentage(8) }} source={require('../../assets/images/thumbnail.png')} />
+                    }
+
                 </TouchableOpacity>
 
                 {/* Uploads */}
@@ -155,11 +194,11 @@ function PostYourVideo(props) {
                         Upload Video
                     </Text>
                 </View>
-                <TouchableOpacity activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', width: RFPercentage(46), height: RFPercentage(8), borderRadius: RFPercentage(1), backgroundColor: '#FAFAFA', marginTop: RFPercentage(4) }}>
+                <TouchableOpacity onPress={() => setPickerModel(true)} activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', width: RFPercentage(46), height: RFPercentage(8), borderRadius: RFPercentage(1), backgroundColor: '#FAFAFA', marginTop: RFPercentage(4) }}>
                     <Feather name="upload-cloud" style={{ fontSize: RFPercentage(3.5) }} color="#909090" />
-
                 </TouchableOpacity>
 
+                {/* Submit Button */}
                 <View style={{ width: "100%", alignItems: "center", marginTop: RFPercentage(6), marginBottom: RFPercentage(12) }}>
                     <MyAppButton
                         title="Submit"
@@ -173,14 +212,46 @@ function PostYourVideo(props) {
                     />
                 </View>
 
-
-
+                {/* Model */}
+                <Modal visible={pickerModel} transparent={true}>
+                    <View style={{ justifyContent: "center", flex: 1, height: height, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.6)" }} >
+                        <View style={{ alignSelf: 'center', alignItems: "flex-start", justifyContent: 'flex-start', borderRadius: RFPercentage(2), backgroundColor: Colors.white, width: "90%", height: RFPercentage(70) }} >
+                            <TouchableOpacity onPress={() => setPickerModel(false)} style={{ position: 'absolute', right: RFPercentage(2), top: RFPercentage(2) }} >
+                                <Entypo name="cross" style={{ fontSize: RFPercentage(4) }} color={Colors.black} />
+                            </TouchableOpacity>
+                            <View style={{ width: '90%', alignItems: 'flex-start', justifyContent: 'center', alignSelf: 'center', marginTop: RFPercentage(3) }}>
+                                <Text style={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: Platform.OS == 'ios' ? '600' : 'bold' }} >
+                                    Under Review
+                                </Text>
+                                <Text style={{ marginTop: RFPercentage(1), color: '#7C7C7C', fontSize: RFPercentage(2) }} >
+                                    Your video will be reviewed by our AI and it will be
+                                </Text>
+                                <Text style={{ color: '#7C7C7C', fontSize: RFPercentage(2) }} >
+                                    approved if it follows our community guidelines.
+                                </Text>
+                            </View>
+                            <Image style={{ marginTop: RFPercentage(6), alignSelf: 'center', width: RFPercentage(30), height: RFPercentage(36) }} source={require('../../assets/images/bot.png')} />
+                            <View style={{ width: "100%", alignItems: "center", position: 'absolute', bottom: RFPercentage(2) }}>
+                                <MyAppButton
+                                    title="Continue"
+                                    onPress={() => setPickerModel(false)}
+                                    padding={RFPercentage(1.6)}
+                                    fontSize={RFPercentage(2.1)}
+                                    // onPress={() => handleLogin()}
+                                    backgroundColor={Colors.primary}
+                                    color={Colors.white}
+                                    bold={false}
+                                    borderRadius={RFPercentage(1)}
+                                    width={"90%"}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
 
             </ScrollView>
-
             {/* Bottom tab */}
             < BottomTab props={props} />
-
         </Screen>
     );
 }
