@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName="PostYourVideo">
+      <Stack.Navigator headerMode="none" initialRouteName="StartAConcert">
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
         <Stack.Screen name="PostYourVideo" component={PostYourVideo} />
         <Stack.Screen name="StartAConcert" component={StartAConcert} />

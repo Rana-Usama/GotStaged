@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Platform, TextInput, ScrollView } from 'react-native';
+import { View, Text, Platform, ScrollView } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
@@ -77,6 +77,7 @@ function StartAConcert(props) {
 
 
     return (
+
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
             {/* Nav */}
@@ -166,7 +167,6 @@ function StartAConcert(props) {
 
             {/* Bottom tab */}
             < BottomTab props={props} />
-
         </Screen>
     );
 }
