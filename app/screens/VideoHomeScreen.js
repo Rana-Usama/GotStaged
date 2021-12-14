@@ -20,6 +20,8 @@ function VideoHomeScreen(props) {
 
     const [video, setVideo] = useState(true);
 
+    const [heart, setHeart] = useState(false);
+
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
@@ -123,12 +125,24 @@ function VideoHomeScreen(props) {
                     <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
                         <View style={{ marginTop: RFPercentage(2.8), flexDirection: 'row', width: '100%', marginLeft: RFPercentage(3), justifyContent: 'flex-start', alignItems: 'center' }}>
+                            <TouchableOpacity onPress={() => setHeart(true)} style={{ position: 'absolute', right: RFPercentage(3), top: RFPercentage(2) }}  >
+                                {heart ?
+                                    <TouchableOpacity onPress={() => setHeart(false)} >
+                                        <MaterialCommunityIcons name="cards-heart" style={{ fontSize: RFPercentage(2.2) }} color={Colors.primary} />
+                                    </TouchableOpacity>
+                                    :
+                                    <MaterialCommunityIcons name="heart-outline" style={{ fontSize: RFPercentage(2.2) }} color={"black"} />
+                                }
+                            </TouchableOpacity>
+
                             <TouchableOpacity activeOpacity={0.8}>
                                 <Image style={{ width: RFPercentage(6), height: RFPercentage(6) }} source={require('../../assets/images/ndp.png')} />
                             </TouchableOpacity>
 
                             <View style={{ marginLeft: RFPercentage(1), justifyContent: 'flex-start', alignItems: 'flex-start', width: '100%' }}>
-                                <Text style={{ position: 'absolute', right: 0 }} > heart</Text>
+                                <Text style={{ position: 'absolute', right: 0 }} >
+                                    heart
+                                </Text>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
                                     <Text style={{ fontWeight: '600', fontSize: RFPercentage(1.9) }}>
                                         Eastwood
@@ -154,9 +168,7 @@ function VideoHomeScreen(props) {
 
                     </View>
                 </ScrollView>
-
             </View>
-
         </Screen>
     );
 }
