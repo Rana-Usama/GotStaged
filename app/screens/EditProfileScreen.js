@@ -178,7 +178,6 @@ function EditProfileScreen(props) {
                     </View>
                 </ScrollView>
 
-
             </Screen>
         </KeyboardAvoidingView>
     );
