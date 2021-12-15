@@ -9,6 +9,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import Screen from './../components/Screen';
 import BottomTab from './../components/common/BottomTab';
 import MyAppButton from './../components/common/MyAppButton';
+import About from './About';
 //config
 import Colors from '../config/Colors';
 
@@ -95,82 +96,100 @@ function MyChannelScreen(props) {
                 </ImageBackground>
 
                 {/* Page Details */}
-                <ScrollView style={{ flex: 1, width: '100%' }} >
-                    <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                {buttonColor == '1' ?
+                    <ScrollView style={{ flex: 1, width: '100%' }} >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: RFPercentage(25), backgroundColor: '#FAFAFA', marginTop: RFPercentage(-1) }}>
+                            <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: RFPercentage(25), backgroundColor: '#FAFAFA', marginTop: RFPercentage(-1) }}>
 
-                            <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }} >
+                                <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }} >
 
-                                <TouchableOpacity activeOpacity={0.7}>
-                                    <Image style={{ width: RFPercentage(20), height: RFPercentage(20), marginLeft: RFPercentage(3) }} source={require('../../assets/images/rock.png')} />
-                                </TouchableOpacity>
+                                    <TouchableOpacity activeOpacity={0.7}>
+                                        <Image style={{ width: RFPercentage(20), height: RFPercentage(20), marginLeft: RFPercentage(3) }} source={require('../../assets/images/rock.png')} />
+                                    </TouchableOpacity>
 
-                                <TouchableOpacity activeOpacity={0.6} style={{ position: 'absolute', top: 0, right: RFPercentage(3) }} >
-                                    <MaterialCommunityIcons name="dots-horizontal" style={{ fontSize: RFPercentage(3.4) }} color={Colors.black} />
-                                </TouchableOpacity>
+                                    <TouchableOpacity activeOpacity={0.6} style={{ position: 'absolute', top: 0, right: RFPercentage(3) }} >
+                                        <MaterialCommunityIcons name="dots-horizontal" style={{ fontSize: RFPercentage(3.4) }} color={Colors.black} />
+                                    </TouchableOpacity>
 
-                                <View style={{ width: '100%', alignSelf: 'flex-start', marginLeft: RFPercentage(3) }} >
-                                    <Text style={{ color: Colors.black, fontSize: RFPercentage(2.7) }}>
-                                        Gibson Musics
-                                    </Text>
-                                    <View style={{ flexDirection: 'row', marginTop: RFPercentage(3) }} >
-                                        <View style={{ justifyContent: 'center', alignItems: 'center' }} >
-                                            <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '500' }} >
-                                                186
-                                            </Text>
-                                            <Text style={{ color: "#707070", fontSize: RFPercentage(2) }} >
-                                                Uploads
-                                            </Text>
+                                    <View style={{ width: '100%', alignSelf: 'flex-start', marginLeft: RFPercentage(3) }} >
+                                        <Text style={{ color: Colors.black, fontSize: RFPercentage(2.7) }}>
+                                            Gibson Musics
+                                        </Text>
+                                        <View style={{ flexDirection: 'row', marginTop: RFPercentage(3) }} >
+                                            <View style={{ justifyContent: 'center', alignItems: 'center' }} >
+                                                <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '500' }} >
+                                                    186
+                                                </Text>
+                                                <Text style={{ color: "#707070", fontSize: RFPercentage(2) }} >
+                                                    Uploads
+                                                </Text>
+                                            </View>
+                                            <View style={{ justifyContent: 'center', alignItems: 'center', marginLeft: RFPercentage(2) }} >
+                                                <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '500' }} >
+                                                    3.1M
+                                                </Text>
+                                                <Text style={{ color: "#707070", fontSize: RFPercentage(2) }} >
+                                                    Followers
+                                                </Text>
+                                            </View>
                                         </View>
-                                        <View style={{ justifyContent: 'center', alignItems: 'center', marginLeft: RFPercentage(2) }} >
-                                            <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '500' }} >
-                                                3.1M
-                                            </Text>
-                                            <Text style={{ color: "#707070", fontSize: RFPercentage(2) }} >
-                                                Followers
-                                            </Text>
-                                        </View>
-                                    </View>
 
-                                    <View style={{ alignSelf: "flex-start", width: RFPercentage(28), marginTop: RFPercentage(4) }}>
-                                        <MyAppButton
-                                            title="Edit Channel"
-                                            padding={RFPercentage(0.9)}
-                                            // onPress={() => handleLogin()}
-                                            fontSize={RFPercentage(2)}
-                                            backgroundColor={Colors.primary}
-                                            color={Colors.white}
-                                            bold={false}
-                                            borderRadius={RFPercentage(1)}
-                                            width={"100%"}
-                                        />
+                                        <View style={{ alignSelf: "flex-start", width: RFPercentage(28), marginTop: RFPercentage(4) }}>
+                                            <MyAppButton
+                                                title="Edit Channel"
+                                                padding={RFPercentage(0.9)}
+                                                // onPress={() => handleLogin()}
+                                                fontSize={RFPercentage(2)}
+                                                backgroundColor={Colors.primary}
+                                                color={Colors.white}
+                                                bold={false}
+                                                borderRadius={RFPercentage(1)}
+                                                width={"100%"}
+                                            />
+                                        </View>
                                     </View>
                                 </View>
                             </View>
+
+                            {/*Body Image */}
+                            <Image style={{ width: RFPercentage(33.2), height: RFPercentage(34), marginTop: RFPercentage(2) }} source={require('../../assets/images/body.png')} />
+
+                            <View style={{ alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2.5) }}>
+                                <TouchableOpacity onPress={() => setChangeButtonColor('1')} activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '50%', height: RFPercentage(6), borderRadius: RFPercentage(1), backgroundColor: chgangeButtonColor == '1' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
+                                    <Feather name="upload-cloud" style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} color={chgangeButtonColor == '1' ? Colors.white : Colors.primary} />
+                                    <Text style={{ color: chgangeButtonColor == '1' ? Colors.white : Colors.primary, fontSize: RFPercentage(2), marginLeft: RFPercentage(2.5) }}>
+                                        Post a New Video
+                                    </Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => setChangeButtonColor('2')} activeOpacity={0.6} style={{ flexDirection: 'row', marginLeft: RFPercentage(2), justifyContent: 'center', alignItems: 'center', width: '50%', borderRadius: RFPercentage(1), height: RFPercentage(6), backgroundColor: chgangeButtonColor == '2' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
+                                    <FontAwesome5 name="guitar" style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} color={chgangeButtonColor == '2' ? Colors.white : Colors.primary} />
+                                    <Text style={{ color: chgangeButtonColor == '2' ? Colors.white : Colors.primary, fontSize: RFPercentage(2) }}>
+                                        Start a Concert
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+
                         </View>
+                    </ScrollView>
+                    :
+                    null
+                }
 
-                        {/*Body Image */}
-                        <Image style={{ width: RFPercentage(33.2), height: RFPercentage(34), marginTop: RFPercentage(2) }} source={require('../../assets/images/body.png')} />
-
-                        <View style={{ alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2.5) }}>
-                            <TouchableOpacity onPress={() => setChangeButtonColor('1')} activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '50%', height: RFPercentage(6), borderRadius: RFPercentage(1), backgroundColor: chgangeButtonColor == '1' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
-                                <Feather name="upload-cloud" style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} color={chgangeButtonColor == '1' ? Colors.white : Colors.primary} />
-                                <Text style={{ color: chgangeButtonColor == '1' ? Colors.white : Colors.primary, fontSize: RFPercentage(2), marginLeft: RFPercentage(2.5) }}>
-                                    Post a New Video
+                {buttonColor == '4' ?
+                    <ScrollView style={{ flex: 1, width: '100%' }} >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            {/* <About /> */}
+                            <View style={{ width: '90%', justifyContent: 'flex-start', alignItems: 'flex-start' }} >
+                                <Text style={{ color: Colors.black, fontSize: RFPercentage(2.8), fontWeight: Platform.OS === 'android' ? 'bold' : '700' }} >
+                                    Discription
                                 </Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setChangeButtonColor('2')} activeOpacity={0.6} style={{ flexDirection: 'row', marginLeft: RFPercentage(2), justifyContent: 'center', alignItems: 'center', width: '50%', borderRadius: RFPercentage(1), height: RFPercentage(6), backgroundColor: chgangeButtonColor == '2' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
-                                <FontAwesome5 name="guitar" style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} color={chgangeButtonColor == '2' ? Colors.white : Colors.primary} />
-                                <Text style={{ color: chgangeButtonColor == '2' ? Colors.white : Colors.primary, fontSize: RFPercentage(2) }}>
-                                    Start a Concert
-                                </Text>
-                            </TouchableOpacity>
+                            </View>
                         </View>
-
-                    </View>
-                </ScrollView>
-
+                    </ScrollView>
+                    :
+                    null
+                }
 
                 {/* Bottom tab */}
                 < BottomTab props={props} />

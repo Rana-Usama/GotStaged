@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName="VideoHomeScreen">
+      <Stack.Navigator headerMode="none" initialRouteName="MyChannelScreen">
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
         <Stack.Screen name="VideoHomeScreen" component={VideoHomeScreen} />
         <Stack.Screen name="PostYourVideo" component={PostYourVideo} />
