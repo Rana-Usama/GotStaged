@@ -10,6 +10,8 @@ import Screen from './../components/Screen';
 import BottomTab from './../components/common/BottomTab';
 import MyAppButton from './../components/common/MyAppButton';
 import About from './About';
+import Payments from './Payments';
+
 //config
 import Colors from '../config/Colors';
 
@@ -181,6 +183,16 @@ function MyChannelScreen(props) {
                     <ScrollView style={{ flex: 1, width: '100%' }} >
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                             <About />
+                        </View>
+                    </ScrollView>
+                    :
+                    null
+                }
+
+                {buttonColor == '3' ?
+                    <ScrollView style={{ flex: 1, width: '100%' }} >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            <Payments />
                         </View>
                     </ScrollView>
                     :
