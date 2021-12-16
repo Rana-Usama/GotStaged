@@ -176,15 +176,11 @@ function MyChannelScreen(props) {
                     null
                 }
 
+                {/* About */}
                 {buttonColor == '4' ?
                     <ScrollView style={{ flex: 1, width: '100%' }} >
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                            {/* <About /> */}
-                            <View style={{ width: '90%', justifyContent: 'flex-start', alignItems: 'flex-start' }} >
-                                <Text style={{ color: Colors.black, fontSize: RFPercentage(2.8), fontWeight: Platform.OS === 'android' ? 'bold' : '700' }} >
-                                    Discription
-                                </Text>
-                            </View>
+                            <About />
                         </View>
                     </ScrollView>
                     :
