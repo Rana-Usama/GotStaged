@@ -5,6 +5,7 @@ import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { EvilIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import Slider from '@react-native-community/slider'
 
 //components
 import Screen from './../components/Screen';
@@ -14,6 +15,9 @@ import Colors from '../config/Colors';
 import BottomTab from '../components/common/BottomTab';
 
 function AdvertisementScreen(props) {
+
+    const [sliderValue, setSliderValue] = useState(0);
+
 
     const pickerData = [
         {
@@ -139,16 +143,27 @@ function AdvertisementScreen(props) {
                     </View>
                     <View style={{ alignSelf: 'center', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: RFPercentage(1) }} >
                         <Text style={{ fontSize: RFPercentage(3), fontWeight: 'bold', color: Colors.black }} >
-                            $50
+                            ${sliderValue.toFixed()}
                         </Text>
                         <TouchableOpacity activeOpacity={0.6} >
                             <MaterialIcons name="edit" style={{ marginLeft: RFPercentage(1), fontSize: RFPercentage(2.8) }} color={Colors.primary} />
                         </TouchableOpacity>
                     </View>
-
-                    <View style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }} >
-
+                    {/* <View style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }} > */}
+                    <View style={{ flex: 1, padding: 20, justifyContent: 'center', backgroundColor: '#ecf0f1', }} >
+                        <Slider
+                            style={{ width: 200, height: 40 }}
+                            minimumValue={0}
+                            maximumValue={500}
+                            minimumTrackTintColor="#FFFFFF"
+                            maximumTrackTintColor="#000000"
+                            value={sliderValue}
+                            onValueChange={
+                                (sliderValue) => setSliderValue(sliderValue)
+                            }
+                        />
                     </View>
+                    {/* </View> */}
 
                     {/* Last Picker */}
                     <View style={{ marginTop: RFPercentage(3), width: '90%', alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
