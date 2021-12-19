@@ -15,6 +15,7 @@ import StartAConcert from './app/screens/StartAConcert';
 import PostYourVideo from './app/screens/PostYourVideo';
 import VideoHomeScreen from './app/screens/VideoHomeScreen';
 import ManageAddScreen from './app/screens/ManageAddScreen';
+import AdvertisementScreen from './app/screens/AdvertisementScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,8 +23,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName="ManageAddScreen">
+      <Stack.Navigator headerMode="none" initialRouteName="AdvertisementScreen">
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
+        <Stack.Screen name="AdvertisementScreen" component={AdvertisementScreen} />
         <Stack.Screen name="ManageAddScreen" component={ManageAddScreen} />
         <Stack.Screen name="VideoHomeScreen" component={VideoHomeScreen} />
         <Stack.Screen name="PostYourVideo" component={PostYourVideo} />
