@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName="AdvertisementScreen">
+      <Stack.Navigator headerMode="none" initialRouteName="MyChannelScreen">
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
         <Stack.Screen name="AdvertisementScreen" component={AdvertisementScreen} />
         <Stack.Screen name="ManageAddScreen" component={ManageAddScreen} />

@@ -43,8 +43,8 @@ function Payments(props) {
         <View style={{ width: '90%', justifyContent: 'flex-start', alignItems: 'center', marginTop: RFPercentage(2) }} >
 
             <DateTimePicker
-                textColor={Colors.primary}
-                isDarkModeEnabled={false}
+                // textColor={Colors.primary}
+                isDarkModeEnabled={true}
                 isVisible={isDateTimePickerVisible}
                 onConfirm={(date) => handleDatePicked(date)}
                 onCancel={() => setIsDateTimePickerVisible(false)}

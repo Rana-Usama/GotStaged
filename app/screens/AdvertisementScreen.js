@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { View, Image, ImageBackground, TouchableOpacity, Text, ScrollView } from 'react-native'
+import { View, Image, ImageBackground, TouchableOpacity, Text, ScrollView, Dimensions, Modal } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider'
@@ -13,8 +14,14 @@ import MyAppButton from './../components/common/MyAppButton';
 //config
 import Colors from '../config/Colors';
 import BottomTab from '../components/common/BottomTab';
+import InputField from './../components/common/InputField';
+
+const { height } = Dimensions.get("window");
+
 
 function AdvertisementScreen(props) {
+
+    const [pickerModel, setPickerModel] = useState(false);
 
     const [sliderValue, setSliderValue] = useState(0);
 
@@ -59,6 +66,45 @@ function AdvertisementScreen(props) {
             color={"grey"}
         />
     }
+
+    const [inputField, SetInputField] = useState([
+        {
+            placeholder: "NAME ON CARD",
+            backgroundColor: Colors.white,
+            title: 'Webiste Link',
+            icon: true,
+            borderRightColor: Colors.white,
+            borderTopColor: Colors.white,
+            borderLeftColor: Colors.white,
+            borderBottomColor: Colors.newInputFieldBorder,
+            placeholderAtCenter: false,
+            placeLeft: true,
+            height: RFPercentage(4),
+            value: "",
+        },
+        {
+            placeholder: "CARD NR",
+            backgroundColor: Colors.white,
+            title: 'Ad Title',
+            icon: true,
+            borderRightColor: Colors.white,
+            borderTopColor: Colors.white,
+            borderLeftColor: Colors.white,
+            borderBottomColor: Colors.newInputFieldBorder,
+            placeholderAtCenter: false,
+            placeLeft: true,
+            height: RFPercentage(4),
+            value: "",
+        },
+    ]);
+
+    const handleChange = (text, i) => {
+        let tempfeilds = [...inputField];
+        tempfeilds[i].value = text;
+        SetInputField(tempfeilds);
+
+    };
+
 
 
     return (
@@ -150,13 +196,14 @@ function AdvertisementScreen(props) {
                         </TouchableOpacity>
                     </View>
                     {/* <View style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }} > */}
-                    <View style={{ flex: 1, padding: 20, justifyContent: 'center', backgroundColor: '#ecf0f1', }} >
+                    <View style={{ width: '90%', justifyContent: 'center', alignItems: 'center', marginTop: RFPercentage((2.4)) }} >
                         <Slider
-                            style={{ width: 200, height: 40 }}
+                            style={{ width: '100%', height: 40 }}
                             minimumValue={0}
+                            thumbTintColor={Colors.primary}
                             maximumValue={500}
-                            minimumTrackTintColor="#FFFFFF"
-                            maximumTrackTintColor="#000000"
+                            minimumTrackTintColor="#707070"
+                            maximumTrackTintColor="#707070"
                             value={sliderValue}
                             onValueChange={
                                 (sliderValue) => setSliderValue(sliderValue)
@@ -166,7 +213,7 @@ function AdvertisementScreen(props) {
                     {/* </View> */}
 
                     {/* Last Picker */}
-                    <View style={{ marginTop: RFPercentage(3), width: '90%', alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
+                    <View style={{ width: '90%', alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
                         <View style={{ alignSelf: 'flex-start', flexDirection: 'row', marginTop: RFPercentage(4) }}>
                             <Text style={{ fontSize: RFPercentage(2.3), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                                 Ad Runtime
@@ -198,7 +245,7 @@ function AdvertisementScreen(props) {
                         <MyAppButton
                             title="Proceed"
                             padding={RFPercentage(1.4)}
-                            // onPress={() => handleLogin()}
+                            onPress={() => setPickerModel(true)}
                             backgroundColor={Colors.primary}
                             color={Colors.white}
                             bold={false}
@@ -207,7 +254,71 @@ function AdvertisementScreen(props) {
                         />
                     </View>
 
-
+                    {/* Model */}
+                    <Modal visible={pickerModel} transparent={true}>
+                        <View style={{ justifyContent: "center", flex: 1, height: height, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.6)" }} >
+                            <View style={{ alignSelf: 'center', alignItems: "center", justifyContent: 'flex-start', borderRadius: RFPercentage(2), backgroundColor: Colors.white, width: "90%", height: RFPercentage(75) }} >
+                                <Image style={{ width: '97%', height: RFPercentage(31), marginTop: RFPercentage(2) }} source={require('../../assets/images/card.png')} />
+                                {/* Input Fields */}
+                                {inputField.map((item, i) => (
+                                    <View key={i} style={{ alignSelf: 'center', marginTop: i == 0 ? RFPercentage(4) : RFPercentage(3) }} >
+                                        {/* Input Fields */}
+                                        <InputField
+                                            placeholder={item.placeholder}
+                                            placeLeft={item.placeLeft}
+                                            backgroundColor={item.backgroundColor}
+                                            atStartPlaceholder={item.atStartPlaceholder}
+                                            borderBottomColor={item.borderBottomColor}
+                                            borderRightColor={item.borderRightColor}
+                                            borderTopColor={item.borderTopColor}
+                                            borderLeftColor={item.borderLeftColor}
+                                            borderWidth={RFPercentage(0.1)}
+                                            placeholderAtCenter={item.placeholderAtCenter}
+                                            height={item.height}
+                                            borderRadius={RFPercentage(1)}
+                                            fontSize={RFPercentage(2)}
+                                            handleFeild={(text) => handleChange(text, i)}
+                                            value={item.value}
+                                            width={"95%"}
+                                        />
+                                    </View>
+                                ))}
+                                {/* exp and cw */}
+                                <View style={{ width: '96%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: RFPercentage(3) }}>
+                                    {/* saperator */}
+                                    <View style={{ backgroundColor: Colors.newInputFieldBorder, width: RFPercentage(0.2), height: RFPercentage(6) }} />
+                                    <View style={{ position: 'absolute', left: RFPercentage(5), justifyContent: 'center', alignItems: 'center' }}>
+                                        <Text style={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold' }} >
+                                            6 / 16
+                                        </Text>
+                                        <Text style={{ color: '#989191', fontSize: RFPercentage(1.8), marginTop: RFPercentage(1) }}>
+                                            EXP DATE
+                                        </Text>
+                                    </View>
+                                    <View style={{ position: 'absolute', right: RFPercentage(5), justifyContent: 'center', alignItems: 'center' }}>
+                                        <Text style={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold' }} >
+                                            231
+                                        </Text>
+                                        <Text style={{ color: '#989191', fontSize: RFPercentage(1.8), marginTop: RFPercentage(1) }}>
+                                            CW
+                                        </Text>
+                                    </View>
+                                </View>
+                                <View style={{ alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(5) }}>
+                                    <TouchableOpacity onPress={() => setPickerModel(false)} style={{ justifyContent: 'center', alignItems: 'center', width: RFPercentage(20), height: RFPercentage(6), borderRadius: RFPercentage(1), backgroundColor: Colors.twoButtons }}>
+                                        <Text style={{ color: Colors.black, fontSize: RFPercentage(2) }}>
+                                            Cancel
+                                        </Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => setPickerModel(false)} style={{ marginLeft: RFPercentage(2), justifyContent: 'center', alignItems: 'center', width: RFPercentage(20), borderRadius: RFPercentage(1), height: RFPercentage(6), backgroundColor: Colors.primary, borderColor: "#757575" }}>
+                                        <Text style={{ color: Colors.white, fontSize: RFPercentage(2) }}>
+                                            Pay Now
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                    </Modal>
                 </View>
             </ScrollView>
 
