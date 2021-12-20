@@ -8,12 +8,43 @@ import { Ionicons } from '@expo/vector-icons';
 //components
 import Screen from './../components/Screen';
 import MyAppButton from './../components/common/MyAppButton';
+import Comments from '../components/common/Comments';
 
 //config
 import Colors from '../config/Colors';
-import Comments from '../components/common/Comments';
 
 function VideoHomeScreen(props) {
+
+    const upNextData = [
+        {
+            imageSource: require('../../assets/images/hcart3.png'),
+            time: '4:54',
+            dp: require('../../assets/images/dp3.png'),
+            title: 'Wandering thoughts | Relaxing thoughts',
+            subTitle: 'Soothing Relaxation'
+        },
+        {
+            imageSource: require('../../assets/images/hcart2.png'),
+            time: '4:54',
+            dp: require('../../assets/images/f2.png'),
+            title: 'Pop Up Hits of the year',
+            subTitle: 'Soothing Relaxation'
+        },
+        {
+            imageSource: require('../../assets/images/hcart1.png'),
+            time: '4:54',
+            dp: require('../../assets/images/f3.png'),
+            title: 'Wandering thoughts | Relaxing thoughts',
+            subTitle: 'Soothing Relaxation'
+        },
+        {
+            imageSource: require('../../assets/images/hcart1.png'),
+            time: '4:54',
+            dp: require('../../assets/images/f4.png'),
+            title: 'Wandering thoughts | Relaxing thoughts',
+            subTitle: 'Soothing Relaxation'
+        },
+    ]
 
     const commentsData = [
         {
@@ -35,7 +66,7 @@ function VideoHomeScreen(props) {
 
     const [color, setColor] = useState('0');
 
-    const [active, setActive] = useState('1');
+    const [active, setActive] = useState('2');
 
     const [video, setVideo] = useState(true);
 
@@ -143,19 +174,64 @@ function VideoHomeScreen(props) {
                         </TouchableOpacity>
                     </View>
 
+
                     {/* Comments */}
-                    <ScrollView style={{ flex: 1, width: '100%' }} >
-                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                            <View style={{ alignSelf: 'center', width: '100%', marginBottom: RFPercentage(2) }} >
-                                {commentsData.map((item, i) => (
-                                    <Comments key={i} imageSource={item.imageSource} userName={item.userName} comment={item.comment} />
-                                ))}
+                    {active == '2' ?
+                        <ScrollView style={{ flex: 1, width: '100%' }} >
+                            <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+
+                                <View style={{ alignSelf: 'center', width: '100%', marginBottom: RFPercentage(10) }} >
+                                    {commentsData.map((item, i) => (
+                                        <Comments key={i} imageSource={item.imageSource} userName={item.userName} comment={item.comment} />
+                                    ))}
+                                </View>
                             </View>
-                        </View>
-                    </ScrollView>
+                        </ScrollView>
+                        :
+                        <ScrollView style={{ flex: 1, width: '100%' }} >
+                            <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                                {upNextData.map((item, i) => (
+                                    <View key={i} style={{ marginTop: RFPercentage(2), width: '90%', justifyContent: 'flex-start', alignItems: "center" }} >
+                                        <TouchableOpacity activeOpacity={0.6} style={{ position: 'absolute', top: 0, right: 0 }} >
+                                            <MaterialCommunityIcons name="dots-horizontal" style={{ fontSize: RFPercentage(3.4) }} color={Colors.black} />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity activeOpacity={0.8} style={{ alignSelf: 'flex-start' }} >
+                                            <ImageBackground style={{ width: RFPercentage(17), height: RFPercentage(13.4) }} source={item.imageSource} >
+                                                <View style={{ flexDirection: 'row', position: 'absolute', bottom: 0, right: 0, borderRadius: RFPercentage(1), justifyContent: 'center', alignItems: 'center', width: RFPercentage(7), height: RFPercentage(3) }}>
+                                                    {/* for empty layer */}
+                                                    <View style={{ borderRadius: RFPercentage(3), position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.1)" }} />
+                                                    <Text style={{ color: Colors.white, fontSize: RFPercentage(1.5), fontWeight: '600' }}>
+                                                        {item.time}
+                                                    </Text>
+                                                </View>
+                                            </ImageBackground>
+                                        </TouchableOpacity>
+                                        <View style={{ marginTop: RFPercentage(1.6), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                            {/* DP Image */}
+                                            <TouchableOpacity activeOpacity={0.5}>
+                                                <Image style={{ width: RFPercentage(5), height: RFPercentage(5) }} source={item.dp} />
+                                            </TouchableOpacity>
+                                            {/* Details */}
+                                            <View style={{ marginLeft: RFPercentage(1.2) }}>
+                                                <Text style={{ opacity: 0.5, fontWeight: '600', fontSize: RFPercentage(1.6) }}>
+                                                    {item.title}
+                                                </Text>
+                                                <View style={{ marginTop: RFPercentage(0.3), flexDirection: 'row' }}>
+                                                    <Text style={{ opacity: 0.6, color: '#707070', fontSize: RFPercentage(1.5) }}>
+                                                        {item.subTitle}
+                                                    </Text>
+                                                </View>
+                                            </View>
+                                        </View>
+                                    </View>
+                                ))}
+                                <View style={{ marginBottom: RFPercentage(5) }} />
+                            </View>
+                        </ScrollView>
+                    }
 
                     {/* Comment input */}
-                    <View style={{ marginBottom: RFPercentage(1), width: '90%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }} >
+                    <View style={{ width: '90%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }} >
                         <Image style={{ width: RFPercentage(6), height: RFPercentage(6) }} source={require('../../assets/images/ep.png')} />
                         <View style={{ marginLeft: RFPercentage(2), flexDirection: 'row', width: RFPercentage(36), height: RFPercentage(7), borderRadius: RFPercentage(4), backgroundColor: '#FAFAFA', justifyContent: 'flex-start', alignItems: 'center' }} >
                             <SimpleLineIcons name="emotsmile" style={{ marginLeft: RFPercentage(2), fontSize: RFPercentage(3) }} color={'#242424'} />

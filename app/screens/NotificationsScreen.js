@@ -46,7 +46,7 @@ function NotificationsScreen(props) {
 
             {/* NavBar */}
             <View style={{ marginTop: RFPercentage(5), width: '90%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                <TouchableOpacity activeOpacity={0.5} style={{ position: 'absolute', left: 0 }}>
+                <TouchableOpacity onPress={() => props.navigation.openDrawer()} activeOpacity={0.5} style={{ position: 'absolute', left: 0 }}>
                     <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2.4) }} source={require('../../assets/images/notification.png')} />
                 </TouchableOpacity>
                 <Text style={{ fontSize: RFPercentage(2.5), fontWeight: '700', color: Colors.black }}>

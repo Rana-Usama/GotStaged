@@ -32,7 +32,7 @@ function MyChannelScreen(props) {
                 <ImageBackground style={{ width: '100%', height: RFPercentage(20), justifyContent: 'flex-start', alignItems: 'center' }} source={require('../../assets/images/sb.png')}>
 
                     <View style={{ marginTop: RFPercentage(5), width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                        <TouchableOpacity activeOpacity={0.5} style={{ position: 'absolute', left: RFPercentage(2), }}>
+                        <TouchableOpacity onPress={() => props.navigation.openDrawer()} activeOpacity={0.5} style={{ position: 'absolute', left: RFPercentage(2), }}>
                             <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2) }} source={require('../../assets/images/notification.png')} />
                         </TouchableOpacity>
                         <Image style={{ width: RFPercentage(18), height: RFPercentage(4) }} source={require('../../assets/images/smallLogo.png')} />
@@ -158,13 +158,13 @@ function MyChannelScreen(props) {
                             <Image style={{ width: RFPercentage(33.2), height: RFPercentage(34), marginTop: RFPercentage(2) }} source={require('../../assets/images/body.png')} />
 
                             <View style={{ alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2.5) }}>
-                                <TouchableOpacity onPress={() => setChangeButtonColor('1')} activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '50%', height: RFPercentage(6), borderRadius: RFPercentage(1), backgroundColor: chgangeButtonColor == '1' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
+                                <TouchableOpacity onPress={() => [setChangeButtonColor('1'), props.navigation.navigate('PostYourVideo')]} activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '50%', height: RFPercentage(6), borderRadius: RFPercentage(1), backgroundColor: chgangeButtonColor == '1' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
                                     <Feather name="upload-cloud" style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} color={chgangeButtonColor == '1' ? Colors.white : Colors.primary} />
                                     <Text style={{ color: chgangeButtonColor == '1' ? Colors.white : Colors.primary, fontSize: RFPercentage(2), marginLeft: RFPercentage(2.5) }}>
                                         Post a New Video
                                     </Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => setChangeButtonColor('2')} activeOpacity={0.6} style={{ flexDirection: 'row', marginLeft: RFPercentage(2), justifyContent: 'center', alignItems: 'center', width: '50%', borderRadius: RFPercentage(1), height: RFPercentage(6), backgroundColor: chgangeButtonColor == '2' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
+                                <TouchableOpacity onPress={() => [setChangeButtonColor('2'), props.navigation.navigate('StartAConcert')]} activeOpacity={0.6} style={{ flexDirection: 'row', marginLeft: RFPercentage(2), justifyContent: 'center', alignItems: 'center', width: '50%', borderRadius: RFPercentage(1), height: RFPercentage(6), backgroundColor: chgangeButtonColor == '2' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
                                     <FontAwesome5 name="guitar" style={{ position: 'absolute', left: RFPercentage(2), fontSize: RFPercentage(2.8) }} color={chgangeButtonColor == '2' ? Colors.white : Colors.primary} />
                                     <Text style={{ color: chgangeButtonColor == '2' ? Colors.white : Colors.primary, fontSize: RFPercentage(2) }}>
                                         Start a Concert

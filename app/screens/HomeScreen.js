@@ -117,7 +117,7 @@ function HomeScreen(props) {
 
             <ImageBackground style={{ width: '100%', height: RFPercentage(16) }} source={require('../../assets/images/back.png')}>
                 <View style={{ position: 'absolute', bottom: RFPercentage(5.4), width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <TouchableOpacity activeOpacity={0.5} style={{ position: 'absolute', left: RFPercentage(2), }}>
+                    <TouchableOpacity onPress={() => props.navigation.openDrawer()} activeOpacity={0.5} style={{ position: 'absolute', left: RFPercentage(2), }}>
                         <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2) }} source={require('../../assets/images/notification.png')} />
                     </TouchableOpacity>
                     <Image style={{ width: RFPercentage(18), height: RFPercentage(4) }} source={require('../../assets/images/smallLogo.png')} />

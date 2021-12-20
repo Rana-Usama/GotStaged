@@ -112,7 +112,7 @@ function ManageAddScreen(props) {
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "flex-start", backgroundColor: Colors.white }}>
 
             <View style={{ width: '90%', alignSelf: 'center', marginTop: RFPercentage(2) }} >
-                <TouchableOpacity activeOpacity={0.5}>
+                <TouchableOpacity activeOpacity={0.5} onPress={() => props.navigation.openDrawer()}>
                     <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2) }} source={require('../../assets/images/notification.png')} />
                 </TouchableOpacity>
 
@@ -139,12 +139,12 @@ function ManageAddScreen(props) {
                                 </Text>
                             </View>
                             <ReactNativeCrossPicker
-                                modalTextStyle={{ color: "rgb(0, 74, 173)" }}
-                                mainComponentStyle={{ width: "96%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(6.5), marginTop: RFPercentage(2) }}
-                                modalComponentStyle={{ borderRadius: RFPercentage(3), backgroundColor: Colors.white, borderColor: Colors.black, borderWidth: RFPercentage(0.1) }}
+                                modalTextStyle={{ color: Colors.black }}
+                                mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(6.5), marginTop: RFPercentage(3) }}
+                                modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
                                 iconComponent={iconComponent}
                                 placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
-                                modalTextStyle={{ color: "#12424a", fontSize: RFPercentage(2.6), fontWeight: 'bold' }}
+                                modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
                                 items={i == 0 ? items : items2}
                                 setItem={i == 0 ? setItem : setItem2} selectedItem={i == 0 ? selectedItem : selectedItem2}
                                 placeholder={item.placeholder}
@@ -201,12 +201,12 @@ function ManageAddScreen(props) {
                             </Text>
                         </View>
                         <ReactNativeCrossPicker
-                            modalTextStyle={{ color: "rgb(0, 74, 173)" }}
-                            mainComponentStyle={{ width: "96%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(6.5), marginTop: RFPercentage(2) }}
-                            modalComponentStyle={{ borderRadius: RFPercentage(3), backgroundColor: Colors.white, borderColor: Colors.black, borderWidth: RFPercentage(0.1) }}
+                            modalTextStyle={{ color: Colors.black }}
+                            mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(6.5), marginTop: RFPercentage(3) }}
+                            modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
                             iconComponent={iconComponent}
                             placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
-                            modalTextStyle={{ color: "#12424a", fontSize: RFPercentage(2.6), fontWeight: 'bold' }}
+                            modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
                             items={items3}
                             setItem={setItem3} selectedItem={selectedItem3}
                             placeholder='Learn more'

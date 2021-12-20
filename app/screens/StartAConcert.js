@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Platform, ScrollView } from 'react-native';
+import { View, Text, Platform, ScrollView, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
@@ -10,9 +10,10 @@ import { AntDesign } from '@expo/vector-icons';
 import Screen from './../components/Screen';
 import BottomTab from './../components/common/BottomTab';
 import InputField from './../components/common/InputField';
+import MyAppButton from './../components/common/MyAppButton';
+
 //config
 import Colors from '../config/Colors';
-import MyAppButton from './../components/common/MyAppButton';
 
 function StartAConcert(props) {
 
@@ -85,7 +86,9 @@ function StartAConcert(props) {
                 <Text style={{ fontSize: RFPercentage(2.7), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                     Start a concert
                 </Text>
-                <Entypo name="cross" style={{ fontSize: RFPercentage(3.5), position: 'absolute', right: 0 }} color={Colors.black} />
+                <TouchableOpacity onPress={() => props.navigation.navigate('MyChannelScreen')} activeOpacity={0.5} style={{ position: 'absolute', right: 0 }} >
+                    <Entypo name="cross" style={{ fontSize: RFPercentage(3.5) }} color={Colors.black} />
+                </TouchableOpacity>
             </View>
 
             {/* InputFields along with the picker component */}
@@ -105,12 +108,12 @@ function StartAConcert(props) {
                                         </Text>
                                     </View>
                                     <ReactNativeCrossPicker
-                                        modalTextStyle={{ color: "rgb(0, 74, 173)" }}
-                                        mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(9), marginTop: RFPercentage(3) }}
-                                        modalComponentStyle={{ borderRadius: RFPercentage(3), backgroundColor: Colors.white, borderColor: Colors.black, borderWidth: RFPercentage(0.1) }}
+                                        modalTextStyle={{ color: Colors.black }}
+                                        mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(8), marginTop: RFPercentage(3) }}
+                                        modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
                                         iconComponent={iconComponent}
                                         placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
-                                        modalTextStyle={{ color: "#12424a", fontSize: RFPercentage(2.6), fontWeight: 'bold' }}
+                                        modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
                                         items={items}
                                         setItem={setItem} selectedItem={selectedItem}
                                         placeholder="Entertainment"

@@ -10,6 +10,7 @@ import LoadingModal from './../components/common/LoadingMdal';
 
 //config
 import Colors from '../config/Colors';
+import HomeScreen from './HomeScreen';
 
 function SignInScreen(props) {
 
@@ -48,6 +49,7 @@ function SignInScreen(props) {
             showIndicator(false);
             return true;
         }
+        props.navigation.navigate('HomeDrawer')
 
         try {
             // API integration
@@ -107,7 +109,7 @@ function SignInScreen(props) {
                             // logoName={item.leftImage}
                             borderWidth={RFPercentage(0.1)}
                             borderColor={Colors.inputFieldBorder}
-                            height={RFPercentage(8.8)}
+                            height={RFPercentage(8)}
                             secure={item.secure}
                             borderRadius={RFPercentage(1)}
                             fontSize={RFPercentage(2)}
@@ -126,7 +128,7 @@ function SignInScreen(props) {
                 <TouchableOpacity onPress={() => setTick(true)} activeOpacity={0.5} style={{ justifyContent: 'center', alignItems: 'center', width: RFPercentage(2.5), height: RFPercentage(2.5), borderRadius: RFPercentage(0.5), borderColor: Colors.primary, borderWidth: RFPercentage(0.09), backgroundColor: Colors.white }}>
                     {tick ?
                         <TouchableOpacity style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }} onPress={() => setTick(false)}>
-                            <Image source={require('../../assets/images/tick.png')} />
+                            <Image style={{ width: RFPercentage(1.2), height: RFPercentage(1) }} source={require('../../assets/images/tick2.png')} />
                         </TouchableOpacity>
                         : null}
                 </TouchableOpacity>

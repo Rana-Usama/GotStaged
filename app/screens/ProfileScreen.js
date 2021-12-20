@@ -65,14 +65,19 @@ function ProfileScreen(props) {
         },
     ]
 
+    const handleNavigation = () => {
+        props.navigation.navigate('EditProfileScreen')
+    };
+
+
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
             <ImageBackground style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: RFPercentage(32) }} source={require('../../assets/images/navbar.png')}>
                 <View style={{ alignSelf: 'center', marginTop: RFPercentage(6), width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
-                    <TouchableOpacity activeOpacity={0.7}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('HomeScreen')} activeOpacity={0.7}>
                         <Ionicons name="chevron-back" style={{ fontSize: RFPercentage(2.8) }} color={Colors.white} />
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={0.7} style={{ position: 'absolute', right: 0 }}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('EditProfileScreen')} activeOpacity={0.7} style={{ position: 'absolute', right: 0 }}>
                         <Feather name="settings" style={{ fontSize: RFPercentage(2.8) }} color={Colors.white} />
                     </TouchableOpacity>
                 </View>
@@ -103,7 +108,7 @@ function ProfileScreen(props) {
                 <MyAppButton
                     title="Edit Profile"
                     padding={RFPercentage(1.4)}
-                    // onPress={() => handleLogin()}
+                    onPress={() => handleNavigation()}
                     backgroundColor={Colors.primary}
                     color={Colors.white}
                     bold={false}
