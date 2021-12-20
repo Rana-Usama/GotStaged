@@ -10,7 +10,6 @@ import LoadingModal from './../components/common/LoadingMdal';
 
 //config
 import Colors from '../config/Colors';
-import HomeScreen from './HomeScreen';
 
 function SignInScreen(props) {
 
