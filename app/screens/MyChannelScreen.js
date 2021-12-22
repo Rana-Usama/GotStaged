@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, TouchableOpacity, View, Image, Text, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { ImageBackground, TouchableOpacity, View, Image, Text, ScrollView, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
@@ -29,9 +29,9 @@ function MyChannelScreen(props) {
             <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
                 {/* Nav bar */}
-                <ImageBackground style={{ width: '100%', height: RFPercentage(20), justifyContent: 'flex-start', alignItems: 'center' }} source={require('../../assets/images/sb.png')}>
+                <ImageBackground style={styles.navImage} source={require('../../assets/images/sb.png')}>
 
-                    <View style={{ marginTop: RFPercentage(5), width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={styles.navContentContainer}>
                         <TouchableOpacity onPress={() => props.navigation.openDrawer()} activeOpacity={0.5} style={{ position: 'absolute', left: RFPercentage(2), }}>
                             <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2) }} source={require('../../assets/images/notification.png')} />
                         </TouchableOpacity>
@@ -102,9 +102,9 @@ function MyChannelScreen(props) {
                     <ScrollView style={{ flex: 1, width: '100%' }} >
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                            <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: RFPercentage(25), backgroundColor: '#FAFAFA', marginTop: RFPercentage(-1) }}>
+                            <View style={styles.pageDetailsContainer}>
 
-                                <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }} >
+                                <View style={styles.pageDetailSubContainer} >
 
                                     <TouchableOpacity activeOpacity={0.7}>
                                         <Image style={{ width: RFPercentage(20), height: RFPercentage(20), marginLeft: RFPercentage(3) }} source={require('../../assets/images/rock.png')} />
@@ -155,7 +155,7 @@ function MyChannelScreen(props) {
                             </View>
 
                             {/*Body Image */}
-                            <Image style={{ width: RFPercentage(33.2), height: RFPercentage(34), marginTop: RFPercentage(2) }} source={require('../../assets/images/body.png')} />
+                            <Image style={styles.bodyImage} source={require('../../assets/images/body.png')} />
 
                             <View style={{ alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2.5) }}>
                                 <TouchableOpacity onPress={() => [setChangeButtonColor('1'), props.navigation.navigate('PostYourVideo')]} activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '50%', height: RFPercentage(6), borderRadius: RFPercentage(1), backgroundColor: chgangeButtonColor == '1' ? Colors.primary : Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.1) }}>
@@ -205,5 +205,40 @@ function MyChannelScreen(props) {
         </KeyboardAvoidingView>
     );
 }
+
+const styles = StyleSheet.create({
+    navImage: {
+        width: '100%',
+        height: RFPercentage(20),
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    navContentContainer: {
+        marginTop: RFPercentage(5),
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    pageDetailsContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: RFPercentage(25),
+        backgroundColor: '#FAFAFA',
+        marginTop: RFPercentage(-1)
+    },
+    pageDetailSubContainer: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    bodyImage: {
+        width: RFPercentage(33.2),
+        height: RFPercentage(34),
+        marginTop: RFPercentage(2)
+    }
+})
 
 export default MyChannelScreen;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ImageBackground, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Platform, TouchableOpacity, StyleSheet } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import { AntDesign } from '@expo/vector-icons';
@@ -72,12 +72,12 @@ function Payments(props) {
                 />
             </View>
 
-            <View style={{ marginTop: RFPercentage(5), width: '100%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }} >
+            <View style={styles.earningOverviewContainer} >
                 <Text style={{ color: Colors.black, fontSize: RFPercentage(2.2), fontWeight: Platform.OS == 'android' ? 'bold' : '600' }} >
                     Earning Overview
                 </Text>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#FAFAFA', position: 'absolute', right: 0, borderRadius: RFPercentage(1.2), width: RFPercentage(19), height: RFPercentage(6.5) }} >
+                <View style={styles.calendarContainer} >
                     <TouchableOpacity activeOpacity={0.8} onPress={() => setIsDateTimePickerVisible(true)} >
                         <Text style={{ fontSize: RFPercentage(1.8), color: Colors.black, marginLeft: RFPercentage(1) }} >
                             {date.toDateString()}
@@ -89,14 +89,15 @@ function Payments(props) {
                 </View>
             </View>
 
+            {/* Chart */}
             <Image style={{ marginTop: RFPercentage(5), width: '100%', height: RFPercentage(20), alignSelf: 'center' }} source={require('../../assets/images/chart.png')} />
 
-            <View style={{ marginTop: RFPercentage(5), width: '100%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }} >
+            <View style={styles.withdrawnHistoryContainer} >
                 <Text style={{ color: Colors.black, fontSize: RFPercentage(2.2), fontWeight: Platform.OS == 'android' ? 'bold' : '600' }} >
                     Withdraw History
                 </Text>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#FAFAFA', position: 'absolute', right: 0, borderRadius: RFPercentage(1.2), width: RFPercentage(19), height: RFPercentage(6.5) }} >
+                <View style={styles.secondCalendar} >
                     <Text style={{ fontSize: RFPercentage(1.8), color: Colors.black, marginLeft: RFPercentage(1) }} >
                         {date.toDateString()}
                     </Text>
@@ -107,7 +108,7 @@ function Payments(props) {
             </View>
 
             {currencyData.map((item, i) => (
-                <View key={i} style={{ marginTop: RFPercentage(5), width: '100%', justifyContent: 'flex-start', alignItems: 'flex-start', alignSelf: 'center' }} >
+                <View key={i} style={styles.successMessage} >
                     <Text style={{ color: Colors.black, fontSize: RFPercentage(2) }} >
                         Withdraw Completed Successfully
                     </Text>
@@ -124,5 +125,51 @@ function Payments(props) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    earningOverviewContainer: {
+        marginTop: RFPercentage(5),
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    calendarContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: '#FAFAFA',
+        position: 'absolute',
+        right: 0,
+        borderRadius: RFPercentage(1.2),
+        width: RFPercentage(19),
+        height: RFPercentage(6.5)
+    },
+    withdrawnHistoryContainer: {
+        marginTop: RFPercentage(5),
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    secondCalendar: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: '#FAFAFA',
+        position: 'absolute',
+        right: 0,
+        borderRadius: RFPercentage(1.2),
+        width: RFPercentage(19),
+        height: RFPercentage(6.5)
+    },
+    successMessage: {
+        marginTop: RFPercentage(5),
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        alignSelf: 'center'
+    }
+})
 
 export default Payments;

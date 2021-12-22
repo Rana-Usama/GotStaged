@@ -45,7 +45,7 @@ function NotificationsScreen(props) {
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
             {/* NavBar */}
-            <View style={{ marginTop: RFPercentage(5), width: '90%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.navContainer}>
                 <TouchableOpacity onPress={() => props.navigation.openDrawer()} activeOpacity={0.5} style={{ position: 'absolute', left: 0 }}>
                     <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2.4) }} source={require('../../assets/images/notification.png')} />
                 </TouchableOpacity>
@@ -92,6 +92,13 @@ const styles = StyleSheet.create({
         height: RFPercentage(0.6),
         backgroundColor: Colors.black,
         borderRadius: RFPercentage(10)
+    },
+    navContainer: {
+        marginTop: RFPercentage(5),
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 

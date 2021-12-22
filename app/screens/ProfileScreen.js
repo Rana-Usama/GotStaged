@@ -1,13 +1,13 @@
 import React from 'react';
-import { ImageBackground, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { ImageBackground, Text, View, TouchableOpacity, Image, ScrollView, StyleSheet } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-import BottomTab from '../components/common/BottomTab';
 
 //components
 import MyAppButton from './../components/common/MyAppButton';
 import Screen from './../components/Screen';
+import BottomTab from '../components/common/BottomTab';
 
 //config
 import Colors from '../config/Colors';
@@ -17,11 +17,9 @@ function ProfileScreen(props) {
     const subsCartData = [
         {
             imageSource: require('../../assets/images/black.png'),
-            // name: 'MelodySheep',
         },
         {
             imageSource: require('../../assets/images/blue.png'),
-            // name: 'Sami Yusuf',
         },
 
     ]
@@ -29,15 +27,12 @@ function ProfileScreen(props) {
     const subsCart2Data = [
         {
             imageSource: require('../../assets/images/singer.png'),
-            // name: 'MelodySheep',
         },
         {
             imageSource: require('../../assets/images/hcart2.png'),
-            // name: 'Sami Yusuf',
         },
         {
             imageSource: require('../../assets/images/hcart3.png'),
-            // name: 'Sami Yusuf',
         },
 
     ]
@@ -74,8 +69,8 @@ function ProfileScreen(props) {
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
             {/* Nav */}
-            <ImageBackground style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: RFPercentage(32) }} source={require('../../assets/images/navbar.png')}>
-                <View style={{ alignSelf: 'center', marginTop: RFPercentage(6), width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+            <ImageBackground style={styles.navContauner} source={require('../../assets/images/navbar.png')}>
+                <View style={styles.navSubContainer}>
                     <TouchableOpacity onPress={() => props.navigation.navigate('HomeScreen')} activeOpacity={0.7}>
                         <Ionicons name="chevron-back" style={{ fontSize: RFPercentage(2.8) }} color={Colors.white} />
                     </TouchableOpacity>
@@ -88,14 +83,14 @@ function ProfileScreen(props) {
                 </TouchableOpacity>
             </ImageBackground>
 
-            <Text style={{ fontSize: RFPercentage(2.2), marginTop: RFPercentage(2.5), color: Colors.black, fontWeight: '700' }}>
+            <Text style={styles.profileNameText}>
                 Mamie Long
             </Text>
-            <Text style={{ fontSize: RFPercentage(2), marginTop: RFPercentage(0.5), color: '#707070' }}>
+            <Text style={styles.userEmailText}>
                 abc@gmail.com
             </Text>
 
-            <View style={{ marginTop: RFPercentage(3), alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.introTextContainer}>
                 <Text style={{ fontSize: RFPercentage(2.1), color: '#707070' }}>
                     Hi, My name is Mamie and I love photography
                 </Text>
@@ -121,7 +116,7 @@ function ProfileScreen(props) {
             <ScrollView style={{ flex: 1, width: '100%', marginTop: RFPercentage(1) }} >
                 <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                    <View style={{ marginTop: RFPercentage(2.5), width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', alignSelf: 'center' }}>
+                    <View style={styles.playListViewTextContainer}>
                         <Text style={{ fontSize: RFPercentage(2.2), color: Colors.black, fontWeight: '700' }}>
                             Playlists
                         </Text>
@@ -139,6 +134,7 @@ function ProfileScreen(props) {
 
                         {subsCartData.map((item, i) => (
                             <TouchableOpacity key={i} activeOpacity={0.8} style={{ borderRadius: RFPercentage(2), marginBottom: RFPercentage(3), marginLeft: !i == 0 ? RFPercentage(2.5) : 0, justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+
                                 <ImageBackground style={{ borderRadius: RFPercentage(10), width: RFPercentage(40), height: RFPercentage(25) }} source={item.imageSource} >
                                     <TouchableOpacity activeOpacity={0.8} style={{ position: 'absolute', bottom: RFPercentage(2), right: RFPercentage(2) }}>
                                         <Image style={{ width: RFPercentage(8.2), height: RFPercentage(8) }} source={require('../../assets/images/play.png')} />
@@ -160,7 +156,7 @@ function ProfileScreen(props) {
 
                 {/* 2nd horizental cart */}
 
-                <View style={{ marginTop: RFPercentage(2.5), width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', alignSelf: 'center' }}>
+                <View style={styles.historyViewAllContainer}>
                     <Text style={{ fontSize: RFPercentage(2.2), color: Colors.black, fontWeight: '700' }}>
                         History
                     </Text>
@@ -173,13 +169,12 @@ function ProfileScreen(props) {
 
 
                 {/*First Playlists Horizental Cart */}
-                <View style={{ marginLeft: RFPercentage(1), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <View style={styles.firstHorizentalCartContainer}>
                     <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
 
                         {subsCart2Data.map((item, i) => (
                             <TouchableOpacity key={i} activeOpacity={0.8} style={{ borderRadius: RFPercentage(1.2), marginBottom: RFPercentage(3), marginLeft: !i == 0 ? RFPercentage(2.5) : 0, justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
                                 <ImageBackground style={{ borderRadius: RFPercentage(10), width: RFPercentage(25), height: RFPercentage(20) }} source={item.imageSource} >
-
                                     <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(1.5), left: RFPercentage(1), borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
                                         {/* empty view for background opacity */}
                                         <View style={{ borderRadius: RFPercentage(3), position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.1)" }} />
@@ -196,7 +191,7 @@ function ProfileScreen(props) {
 
 
                 {/* 3rd cart */}
-                <View style={{ marginTop: RFPercentage(2.5), width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', alignSelf: 'center' }}>
+                <View style={styles.subViewAllText}>
                     <Text style={{ fontSize: RFPercentage(2.2), color: Colors.black, fontWeight: '700' }}>
                         My Subscriptions
                     </Text>
@@ -208,7 +203,7 @@ function ProfileScreen(props) {
                 </View>
 
                 {/*Horizental Profiles Cart */}
-                <View style={{ marginLeft: RFPercentage(1), marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <View style={styles.subscriptionsContainer}>
                     <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
 
                         {subsCart3Data.map((item, i) => (
@@ -231,5 +226,79 @@ function ProfileScreen(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    navContauner: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: RFPercentage(32)
+    },
+    navSubContainer: {
+        alignSelf: 'center',
+        marginTop: RFPercentage(6),
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    profileNameText: {
+        fontSize: RFPercentage(2.2),
+        marginTop: RFPercentage(2.5),
+        color: Colors.black,
+        fontWeight: '700'
+    },
+    userEmailText: {
+        fontSize: RFPercentage(2),
+        marginTop: RFPercentage(0.5),
+        color: '#707070'
+    },
+    introTextContainer: {
+        marginTop: RFPercentage(3),
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    playListViewTextContainer: {
+        marginTop: RFPercentage(2.5),
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        alignSelf: 'center'
+    },
+    firstHorizentalCartContainer: {
+        marginLeft: RFPercentage(1),
+        marginTop: RFPercentage(2),
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    historyViewAllContainer: {
+        marginTop: RFPercentage(2.5),
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        alignSelf: 'center'
+    },
+    subViewAllText: {
+        marginTop: RFPercentage(2.5),
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        alignSelf: 'center'
+    },
+    subscriptionsContainer: {
+        marginLeft: RFPercentage(1),
+        marginTop: RFPercentage(2),
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    }
+})
 
 export default ProfileScreen;

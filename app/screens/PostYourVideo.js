@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Platform, Modal, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Image, Platform, Modal, ScrollView, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -7,16 +7,15 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { LinearGradient } from 'expo-linear-gradient';
 
 //components
 import Screen from './../components/Screen';
 import BottomTab from './../components/common/BottomTab';
 import InputField from './../components/common/InputField';
 import MyAppButton from './../components/common/MyAppButton';
+
 //config
 import Colors from '../config/Colors';
-import MyChannelScreen from './MyChannelScreen';
 
 const { height } = Dimensions.get("window");
 
@@ -102,7 +101,7 @@ function PostYourVideo(props) {
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
             {/* Nav */}
-            <View style={{ width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: RFPercentage(3) }} >
+            <View style={styles.navContainer} >
                 <Text style={{ fontSize: RFPercentage(2.7), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                     Post Your Video
                 </Text>
@@ -129,11 +128,11 @@ function PostYourVideo(props) {
                                     </View>
                                     <ReactNativeCrossPicker
                                         modalTextStyle={{ color: Colors.black }}
-                                        mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(8), marginTop: RFPercentage(3) }}
-                                        modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
+                                        mainComponentStyle={styles.mainComponentStyle}
+                                        modalComponentStyle={styles.modalComponentStyle}
                                         iconComponent={iconComponent}
                                         placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
-                                        modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
+                                        modalTextStyle={styles.modalTextStyle}
                                         items={items}
                                         setItem={setItem} selectedItem={selectedItem}
                                         placeholder="Entertainment"
@@ -177,7 +176,7 @@ function PostYourVideo(props) {
 
                 {/* Thumbnail */}
                 <View style={{ width: '90%', justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'center', marginTop: RFPercentage(2.5) }} >
-                    <Text style={{ fontSize: RFPercentage(2.5), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
+                    <Text style={styles.thumbnailTextContainer} >
                         Thumbnail
                     </Text>
                 </View>
@@ -192,17 +191,17 @@ function PostYourVideo(props) {
                 </TouchableOpacity>
 
                 {/* Uploads */}
-                <View style={{ width: '90%', justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'center', marginTop: RFPercentage(3.5) }} >
+                <View style={styles.uploadVideoTextContainer} >
                     <Text style={{ fontSize: RFPercentage(2.5), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                         Upload Video
                     </Text>
                 </View>
-                <TouchableOpacity onPress={() => setPickerModel(true)} activeOpacity={0.6} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', width: RFPercentage(46), height: RFPercentage(8), borderRadius: RFPercentage(1), backgroundColor: '#FAFAFA', marginTop: RFPercentage(4) }}>
+                <TouchableOpacity onPress={() => setPickerModel(true)} activeOpacity={0.6} style={styles.uploadVideoIcon}>
                     <Feather name="upload-cloud" style={{ fontSize: RFPercentage(3.5) }} color="#909090" />
                 </TouchableOpacity>
 
                 {/* Submit Button */}
-                <View style={{ width: "100%", alignItems: "center", marginTop: RFPercentage(6), marginBottom: RFPercentage(12) }}>
+                <View style={styles.submitButtonContainer}>
                     <MyAppButton
                         title="Submit"
                         padding={RFPercentage(1.6)}
@@ -217,8 +216,8 @@ function PostYourVideo(props) {
 
                 {/* Model */}
                 <Modal visible={pickerModel} transparent={true}>
-                    <View style={{ justifyContent: "center", flex: 1, height: height, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.6)" }} >
-                        <View style={{ alignSelf: 'center', alignItems: "flex-start", justifyContent: 'flex-start', borderRadius: RFPercentage(2), backgroundColor: Colors.white, width: "90%", height: RFPercentage(70) }} >
+                    <View style={styles.modalContainer} >
+                        <View style={styles.mdalSubContainer} >
                             <TouchableOpacity onPress={() => setPickerModel(false)} style={{ position: 'absolute', right: RFPercentage(2), top: RFPercentage(2) }} >
                                 <Entypo name="cross" style={{ fontSize: RFPercentage(4) }} color={Colors.black} />
                             </TouchableOpacity>
@@ -258,5 +257,81 @@ function PostYourVideo(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    navContainer: {
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginTop: RFPercentage(3)
+    },
+    mainComponentStyle: {
+        width: "100%",
+        borderWidth: 0,
+        backgroundColor: "#FAFAFA",
+        height: RFPercentage(8),
+        marginTop: RFPercentage(3)
+    },
+    modalComponentStyle: {
+        borderRadius: RFPercentage(2.3),
+        backgroundColor: Colors.white,
+        borderColor: Colors.primary,
+        borderWidth: RFPercentage(0.3)
+    },
+    modalTextStyle: {
+        color: Colors.black,
+        fontSize: RFPercentage(2.4),
+        fontWeight: 'bold',
+        bottom: RFPercentage(1.8)
+    },
+    thumbnailTextContainer: {
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        alignSelf: 'center',
+        marginTop: RFPercentage(2.5)
+    },
+    uploadVideoTextContainer: {
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        alignSelf: 'center',
+        marginTop: RFPercentage(3.5)
+    },
+    uploadVideoIcon: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        width: RFPercentage(46),
+        height: RFPercentage(8),
+        borderRadius: RFPercentage(1),
+        backgroundColor: '#FAFAFA',
+        marginTop: RFPercentage(4)
+    },
+    submitButtonContainer: {
+        width: "100%",
+        alignItems: "center",
+        marginTop: RFPercentage(6),
+        marginBottom: RFPercentage(12)
+    },
+    modalContainer: {
+        justifyContent: "center",
+        flex: 1,
+        height: height,
+        width: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.6)"
+    },
+    mdalSubContainer: {
+        alignSelf: 'center',
+        alignItems: "flex-start",
+        justifyContent: 'flex-start',
+        borderRadius: RFPercentage(2),
+        backgroundColor: Colors.white,
+        width: "90%",
+        height: RFPercentage(70)
+    }
+})
 
 export default PostYourVideo;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, Text, TouchableOpacity, Platform, ScrollView } from 'react-native';
+import { View, Image, Text, TouchableOpacity, Platform, ScrollView, StyleSheet } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -130,9 +130,8 @@ function ManageAddScreen(props) {
                 <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
                     {/* Pickers */}
-
                     {pickerData.map((item, i) => (
-                        <View key={i} style={{ marginTop: RFPercentage(3), width: '90%', alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
+                        <View key={i} style={styles.pickerContainer}>
                             <View style={{ alignSelf: 'flex-start', flexDirection: 'row' }}>
                                 <Text style={{ fontSize: RFPercentage(2.3), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                                     {item.title}
@@ -140,8 +139,8 @@ function ManageAddScreen(props) {
                             </View>
                             <ReactNativeCrossPicker
                                 modalTextStyle={{ color: Colors.black }}
-                                mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(6.5), marginTop: RFPercentage(3) }}
-                                modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
+                                mainComponentStyle={styles.mainComponentStyle}
+                                modalComponentStyle={StyleSheet.modalComponentStyle}
                                 iconComponent={iconComponent}
                                 placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
                                 modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
@@ -233,10 +232,31 @@ function ManageAddScreen(props) {
 
             {/* BottomTab */}
             <BottomTab props={props} />
-
-
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    pickerContainer: {
+        marginTop: RFPercentage(3),
+        width: '90%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center'
+    },
+    mainComponentStyle: {
+        width: "100%",
+        borderWidth: 0,
+        backgroundColor: "#FAFAFA",
+        height: RFPercentage(6.5),
+        marginTop: RFPercentage(3)
+    },
+    modalComponentStyle: {
+        borderRadius: RFPercentage(2.3),
+        backgroundColor: Colors.white,
+        borderColor: Colors.primary,
+        borderWidth: RFPercentage(0.3)
+    }
+})
 
 export default ManageAddScreen;
