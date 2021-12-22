@@ -93,7 +93,6 @@ function ProfileScreen(props) {
                 abc@gmail.com
             </Text>
 
-
             <View style={{ marginTop: RFPercentage(3), alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={{ fontSize: RFPercentage(2.1), color: '#707070' }}>
                     Hi, My name is Mamie and I love photography
@@ -117,7 +116,7 @@ function ProfileScreen(props) {
                 />
             </View>
 
-            <ScrollView style={{ flex: 1, width: '100%' }} >
+            <ScrollView style={{ flex: 1, width: '100%', marginTop: RFPercentage(1) }} >
                 <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
                     <View style={{ marginTop: RFPercentage(2.5), width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', alignSelf: 'center' }}>

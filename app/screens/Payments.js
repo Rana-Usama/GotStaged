@@ -78,9 +78,11 @@ function Payments(props) {
                 </Text>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#FAFAFA', position: 'absolute', right: 0, borderRadius: RFPercentage(1.2), width: RFPercentage(19), height: RFPercentage(6.5) }} >
-                    <Text style={{ fontSize: RFPercentage(1.8), color: Colors.black, marginLeft: RFPercentage(1) }} >
-                        {date.toDateString()}
-                    </Text>
+                    <TouchableOpacity activeOpacity={0.8} onPress={() => setIsDateTimePickerVisible(true)} >
+                        <Text style={{ fontSize: RFPercentage(1.8), color: Colors.black, marginLeft: RFPercentage(1) }} >
+                            {date.toDateString()}
+                        </Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => setIsDateTimePickerVisible(true)} activeOpacity={0.6} style={{ position: 'absolute', right: RFPercentage(1) }} >
                         <AntDesign name="caretdown" style={{ fontSize: RFPercentage(2) }} color={Colors.black} />
                     </TouchableOpacity>

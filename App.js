@@ -55,7 +55,6 @@ export default function App() {
         <Stack.Screen name="StartAConcert" component={StartAConcert} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
-        {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

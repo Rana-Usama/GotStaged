@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, View, Image, Text, ScrollView, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native'
+import { ImageBackground, View, Image, Text, ScrollView, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -38,7 +38,7 @@ function VideoHomeScreen(props) {
             subTitle: 'Soothing Relaxation'
         },
         {
-            imageSource: require('../../assets/images/hcart1.png'),
+            imageSource: require('../../assets/images/hcart2.png'),
             time: '4:54',
             dp: require('../../assets/images/f4.png'),
             title: 'Wandering thoughts | Relaxing thoughts',
@@ -72,6 +72,7 @@ function VideoHomeScreen(props) {
 
 
     return (
+
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={{ flex: 1 }}
@@ -193,7 +194,7 @@ function VideoHomeScreen(props) {
                                 {upNextData.map((item, i) => (
                                     <View key={i} style={{ marginTop: RFPercentage(2), width: '90%', justifyContent: 'flex-start', alignItems: "center" }} >
                                         <TouchableOpacity activeOpacity={0.6} style={{ position: 'absolute', top: 0, right: 0 }} >
-                                            <MaterialCommunityIcons name="dots-horizontal" style={{ fontSize: RFPercentage(3.4) }} color={Colors.black} />
+                                            <MaterialCommunityIcons name="dots-vertical" style={{ fontSize: RFPercentage(3) }} color={Colors.black} />
                                         </TouchableOpacity>
                                         <TouchableOpacity activeOpacity={0.8} style={{ alignSelf: 'flex-start' }} >
                                             <ImageBackground style={{ width: RFPercentage(17), height: RFPercentage(13.4) }} source={item.imageSource} >
@@ -230,8 +231,9 @@ function VideoHomeScreen(props) {
                         </ScrollView>
                     }
 
+
                     {/* Comment input */}
-                    <View style={{ width: '90%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }} >
+                    <View style={{ width: '90%', position: 'absolute', bottom: 0, alignSelf: 'center', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }} >
                         <Image style={{ width: RFPercentage(6), height: RFPercentage(6) }} source={require('../../assets/images/ep.png')} />
                         <View style={{ marginLeft: RFPercentage(2), flexDirection: 'row', width: RFPercentage(36), height: RFPercentage(7), borderRadius: RFPercentage(4), backgroundColor: '#FAFAFA', justifyContent: 'flex-start', alignItems: 'center' }} >
                             <SimpleLineIcons name="emotsmile" style={{ marginLeft: RFPercentage(2), fontSize: RFPercentage(3) }} color={'#242424'} />
@@ -241,7 +243,6 @@ function VideoHomeScreen(props) {
                             </TouchableOpacity>
                         </View>
                     </View>
-
                 </View>
             </Screen>
         </KeyboardAvoidingView>

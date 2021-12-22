@@ -29,7 +29,7 @@ function AppDrawer({ navigation }) {
             icon: require('../../../assets/images/d3.png'),
             width: RFPercentage(2.8),
             height: RFPercentage(2.4),
-            path: "HomeScreen"
+            path: "VideoHomeScreen"
         },
         {
             id: 3,
@@ -77,8 +77,6 @@ function AppDrawer({ navigation }) {
     return (
         <View style={{ flex: 1, width: '100%', position: 'absolute' }}  >
 
-
-
             <ImageBackground style={{ width: '100%', height: RFPercentage(25), justifyContent: 'center', alignItems: 'center' }} source={require('../../../assets/images/top.png')} >
                 <View style={{ alignSelf: 'center', justifyContent: 'center', marginTop: RFPercentage(2) }}>
                     <TouchableOpacity activeOpacity={0.8} >
@@ -97,7 +95,7 @@ function AppDrawer({ navigation }) {
                 {/* <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}> */}
                 {/* items with devider */}
                 {items.map((item, index) => (
-                    <View key={index} style={{ marginTop: index === 0 ? RFPercentage(4) : RFPercentage(4.9), justifyContent: 'center', alignItems: "center", flexDirection: 'row' }} >
+                    <View key={index} style={{ marginTop: index === 0 ? RFPercentage(4) : RFPercentage(4.7), justifyContent: 'center', alignItems: "center", flexDirection: 'row' }} >
                         <Image style={{ width: item.width, height: item.height }} source={item.icon} />
                         <View style={{ alignItems: "center", width: "70%" }} >
                             <TouchableOpacity activeOpacity={0.7} onPress={() => {
@@ -110,7 +108,7 @@ function AppDrawer({ navigation }) {
                 ))}
 
                 {/* Logout */}
-                <View style={{ marginLeft: RFPercentage(0.6), marginTop: RFPercentage(6), justifyContent: 'center', alignItems: "center", flexDirection: 'row' }} >
+                <View style={{ marginLeft: RFPercentage(0.6), marginTop: RFPercentage(4.5), justifyContent: 'center', alignItems: "center", flexDirection: 'row' }} >
                     <Image style={{ width: RFPercentage(2.4), height: RFPercentage(2) }} source={require('../../../assets/images/d9.png')} />
                     <View style={{ alignItems: "center", width: "70%" }} >
                         <TouchableOpacity onPress={() => { navigation.navigate('SignInScreen') }} activeOpacity={0.7} style={{ alignSelf: "flex-start", flexDirection: "row", justifyContent: "center", alignItems: "center" }} >

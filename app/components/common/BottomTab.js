@@ -23,30 +23,15 @@ function BottomTab({ props }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{ position: 'absolute', left: RFPercentage(13) }} onPress={() => [setActive('2'), props.navigation.navigate('MyChannelScreen')]}>
-                    {/* <Feather name="home" size={RFPercentage(4)} color={active == '1' ? Colors.primary : '#929292'} /> */}
-                    {active == '2' ?
-                        <Image style={{ width: RFPercentage(3), height: RFPercentage(3.3) }} source={require('../../../assets/images/link.png')} />
-                        :
-                        <Image style={{ width: RFPercentage(3), height: RFPercentage(3.4) }} source={require('../../../assets/images/linku.png')} />
-                    }
+                    <Image style={{ width: RFPercentage(3), height: RFPercentage(3.2) }} source={require('../../../assets/images/linku.png')} />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{ position: 'absolute', right: RFPercentage(14) }} onPress={() => [setActive('3'), props.navigation.navigate('NotificationsScreen')]}>
-                    {/* <Feather name="home" size={RFPercentage(4)} color={active == '1' ? Colors.primary : '#929292'} /> */}
-                    {active == '3' ?
-                        <Image style={{ width: RFPercentage(2.7), height: RFPercentage(3.1) }} source={require('../../../assets/images/bellu.png')} />
-                        :
-                        <Image style={{ width: RFPercentage(2.7), height: RFPercentage(3.1) }} source={require('../../../assets/images/bell.png')} />
-                    }
+                    <Image style={{ width: RFPercentage(2.6), height: RFPercentage(2.9) }} source={require('../../../assets/images/bell.png')} />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{ position: 'absolute', right: RFPercentage(1) }} onPress={() => [setActive('4'), props.navigation.navigate('ProfileScreen')]}>
-                    {/* <Feather name="home" size={RFPercentage(4)} color={active == '1' ? Colors.primary : '#929292'} /> */}
-                    {active == '4' ?
-                        <Image style={{ width: RFPercentage(2.7), height: RFPercentage(3) }} source={require('../../../assets/images/acc.png')} />
-                        :
-                        <Image style={{ width: RFPercentage(2.7), height: RFPercentage(3) }} source={require('../../../assets/images/accu.png')} />
-                    }
+                    <Image style={{ width: RFPercentage(2.7), height: RFPercentage(3) }} source={require('../../../assets/images/accu.png')} />
                 </TouchableOpacity>
 
             </View>
