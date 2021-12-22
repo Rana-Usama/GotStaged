@@ -14,7 +14,6 @@ import Colors from '../config/Colors';
 
 function ProfileScreen(props) {
 
-
     const subsCartData = [
         {
             imageSource: require('../../assets/images/black.png'),
@@ -26,6 +25,7 @@ function ProfileScreen(props) {
         },
 
     ]
+
     const subsCart2Data = [
         {
             imageSource: require('../../assets/images/singer.png'),
@@ -72,6 +72,8 @@ function ProfileScreen(props) {
 
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
+
+            {/* Nav */}
             <ImageBackground style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: RFPercentage(32) }} source={require('../../assets/images/navbar.png')}>
                 <View style={{ alignSelf: 'center', marginTop: RFPercentage(6), width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <TouchableOpacity onPress={() => props.navigation.navigate('HomeScreen')} activeOpacity={0.7}>

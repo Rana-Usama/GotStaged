@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, View, Text, Image, TouchableOpacity } from 'react-native'
+import { ImageBackground, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -33,7 +33,7 @@ function SearchScreen(props) {
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
             <ImageBackground style={{ width: '100%', height: RFPercentage(16), justifyContent: 'center', alignItems: 'center' }} source={require('../../assets/images/sb.png')}>
-                <View style={{ alignSelf: 'center', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row', width: '90%', position: 'absolute', bottom: RFPercentage(3) }}>
+                <View style={styles.container}>
 
                     <Ionicons name="md-arrow-back" style={{ fontSize: RFPercentage(3.7) }} color="black" />
 
@@ -69,5 +69,17 @@ function SearchScreen(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignSelf: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '90%',
+        position: 'absolute',
+        bottom: RFPercentage(3)
+    }
+})
 
 export default SearchScreen;

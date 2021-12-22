@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Platform, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Platform, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
@@ -82,7 +82,7 @@ function StartAConcert(props) {
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
             {/* Nav */}
-            <View style={{ width: '90%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: RFPercentage(3) }} >
+            <View style={styles.navContainer} >
                 <Text style={{ fontSize: RFPercentage(2.7), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                     Start a concert
                 </Text>
@@ -109,11 +109,11 @@ function StartAConcert(props) {
                                     </View>
                                     <ReactNativeCrossPicker
                                         modalTextStyle={{ color: Colors.black }}
-                                        mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(8), marginTop: RFPercentage(3) }}
-                                        modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
+                                        mainComponentStyle={styles.mainComponentStyle}
+                                        modalComponentStyle={styles.modalComponentStyle}
                                         iconComponent={iconComponent}
                                         placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
-                                        modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
+                                        modalTextStyle={styles.modalTextStyle}
                                         items={items}
                                         setItem={setItem} selectedItem={selectedItem}
                                         placeholder="Entertainment"
@@ -173,5 +173,34 @@ function StartAConcert(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    navContainer: {
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginTop: RFPercentage(3)
+    },
+    mainComponentStyle: {
+        width: "100%",
+        borderWidth: 0,
+        backgroundColor: "#FAFAFA",
+        height: RFPercentage(8),
+        marginTop: RFPercentage(3)
+    },
+    modalComponentStyle: {
+        borderRadius: RFPercentage(2.3),
+        backgroundColor: Colors.white,
+        borderColor: Colors.primary,
+        borderWidth: RFPercentage(0.3)
+    },
+    modalTextStyle: {
+        color: Colors.black,
+        fontSize: RFPercentage(2.4),
+        fontWeight: 'bold',
+        bottom: RFPercentage(1.8)
+    }
+})
 
 export default StartAConcert;
