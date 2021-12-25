@@ -4,9 +4,9 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import { AntDesign } from '@expo/vector-icons';
 
-
 //components
 import MyAppButton from '../components/common/MyAppButton';
+
 //config
 import Colors from '../config/Colors';
 

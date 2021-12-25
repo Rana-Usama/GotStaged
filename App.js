@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native'
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { RFPercentage } from 'react-native-responsive-fontsize';
 import { createDrawerNavigator } from "@react-navigation/drawer"
 
 //screens
@@ -20,7 +18,7 @@ import VideoHomeScreen from './app/screens/VideoHomeScreen';
 import ManageAddScreen from './app/screens/ManageAddScreen';
 import AdvertisementScreen from './app/screens/AdvertisementScreen';
 
-//compoenents
+//components
 import AppDrawer from './app/components/common/AppDrawer';
 
 //config

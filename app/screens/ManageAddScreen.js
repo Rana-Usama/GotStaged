@@ -7,10 +7,11 @@ import { Feather } from '@expo/vector-icons';
 
 //components
 import Screen from './../components/Screen';
-//config
-import Colors from '../config/Colors';
 import InputField from './../components/common/InputField';
 import BottomTab from '../components/common/BottomTab';
+
+//config
+import Colors from '../config/Colors';
 
 function ManageAddScreen(props) {
 

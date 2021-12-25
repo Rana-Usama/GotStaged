@@ -5,10 +5,10 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 //components
 import Screen from './../components/Screen';
 import BottomTab from '../components/common/BottomTab';
+import NotificationsCard from './../components/common/NotificationsCard';
 
 //config
 import Colors from '../config/Colors';
-import NotificationsCard from './../components/common/NotificationsCard';
 
 function NotificationsScreen(props) {
 
