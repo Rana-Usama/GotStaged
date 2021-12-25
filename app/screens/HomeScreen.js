@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, Image, View, TouchableOpacity, StyleSheet, ImageBackground, ScrollView } from 'react-native'
+import { Text, Image, View, TouchableOpacity, ImageBackground, ScrollView, StyleSheet } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 //components
@@ -114,9 +114,8 @@ function HomeScreen(props) {
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
             {/* NavBar */}
-
             <ImageBackground style={{ width: '100%', height: RFPercentage(16) }} source={require('../../assets/images/back.png')}>
-                <View style={{ position: 'absolute', bottom: RFPercentage(5.4), width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                <View style={styles.navBarContainer}>
                     <TouchableOpacity onPress={() => props.navigation.openDrawer()} activeOpacity={0.5} style={{ position: 'absolute', left: RFPercentage(2), }}>
                         <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2) }} source={require('../../assets/images/notification.png')} />
                     </TouchableOpacity>
@@ -131,8 +130,7 @@ function HomeScreen(props) {
             </ImageBackground>
 
             {/* Top buttons */}
-
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: RFPercentage(3), width: "90%", height: RFPercentage(7), backgroundColor: Colors.twoButtons, borderRadius: RFPercentage(10) }}>
+            <View style={styles.topButtonsContainer}>
                 <TouchableOpacity onPress={() => setActive('1')} activeOpacity={0.5} style={{ justifyContent: 'center', alignItems: 'center', width: "45%", height: RFPercentage(5), backgroundColor: active == '1' ? Colors.white : Colors.twoButtons, borderRadius: RFPercentage(10) }}>
                     <Text style={{ color: active == '1' ? Colors.black : '#707070', fontSize: RFPercentage(1.8), fontWeight: '500' }}>
                         FEED
@@ -146,17 +144,14 @@ function HomeScreen(props) {
             </View>
 
             {/*Vedio Cart */}
-
             <ScrollView style={{ flex: 1, width: '100%' }} >
-                <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(1) }}>
-
+                <View style={styles.scrollViewContainer}>
                     {active == '1' ?
-
                         // Feed
-                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(1) }}>
+                        <View style={styles.feedContainer}>
 
                             {cartData.map((item, i) => (
-                                <View key={i} style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                                <View key={i} style={styles.feedSubContainer}>
                                     {i == 2 ?
 
                                         <View style={{ width: '100%' }}>
@@ -176,22 +171,22 @@ function HomeScreen(props) {
 
                                             {/* Horizental Scrolling carts */}
 
-                                            <ScrollView horizontal={true} style={{ marginTop: RFPercentage(3), width: '100%', backgroundColor: Colors.white }}>
-                                                <View style={{ width: "70%", flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
-                                                    <View style={{ marginLeft: RFPercentage(2), marginBottom: RFPercentage(3), width: '100%', alignSelf: 'center' }}>
+                                            <ScrollView horizontal={true} style={styles.feedHorizentalScroll}>
+                                                <View style={styles.feedScrollSubContainer}>
+                                                    <View style={styles.feedHorizentalCartMainContainer}>
 
-                                                        <View style={{ marginTop: RFPercentage(-5), flexDirection: 'row', width: '90%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                                        <View style={styles.feedHorizentalCartSubContainer}>
                                                             {horizentalCartdata.map((item, i) => (
                                                                 <View key={i} style={{ marginLeft: !i == 0 ? RFPercentage(2) : 0, width: '50%', justifyContent: 'flex-start', alignItems: 'center' }}>
 
                                                                     {/*Thumbnail of vedio */}
-                                                                    <ImageBackground style={{ overflow: 'hidden', borderRadius: RFPercentage(2), marginTop: RFPercentage(5), alignSelf: 'center', width: '100%', height: RFPercentage(22) }} source={item.thumbnailSource}>
+                                                                    <ImageBackground style={styles.thumbnailOfVideo} source={item.thumbnailSource}>
                                                                         {/* Views and eye icon */}
-                                                                        <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(2), left: RFPercentage(2), borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
+                                                                        <View style={styles.viewsAndEyeIconContainer}>
                                                                             {/* empty view for background opacity */}
-                                                                            <View style={{ borderRadius: RFPercentage(3), position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.1)" }} />
+                                                                            <View style={styles.emptyViewForBackgroundOpacity} />
                                                                             <Image style={{ width: RFPercentage(2.3), height: RFPercentage(1.8) }} source={require('../../assets/images/whiteeye.png')} />
-                                                                            <Text style={{ fontSize: RFPercentage(1.6), color: Colors.white, marginLeft: RFPercentage(0.8), fontWeight: '800' }}>
+                                                                            <Text style={styles.viewsText}>
                                                                                 {item.views}
                                                                             </Text>
                                                                         </View>
@@ -229,7 +224,7 @@ function HomeScreen(props) {
                                     <View key={i} style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }}>
 
                                         {/*Thumbnail of vedio */}
-                                        <ImageBackground style={{ overflow: 'hidden', borderRadius: RFPercentage(2), marginTop: RFPercentage(5), alignSelf: 'center', width: '100%', height: RFPercentage(30) }} source={item.thumbnailSource}>
+                                        <ImageBackground style={styles.feedVideoThumbnailContainer} source={item.thumbnailSource}>
                                             <View style={{ flexDirection: 'row', position: 'absolute', top: RFPercentage(2), left: RFPercentage(2), backgroundColor: Colors.darkGrey2, borderRadius: RFPercentage(3), justifyContent: 'center', alignItems: 'center', width: RFPercentage(12), height: RFPercentage(4.2) }}>
                                                 <Image style={{ width: RFPercentage(2.3), height: RFPercentage(1.8) }} source={require('../../assets/images/whiteeye.png')} />
                                                 <Text style={{ fontSize: RFPercentage(1.6), color: Colors.white, marginLeft: RFPercentage(0.8), fontWeight: '800' }}>
@@ -248,7 +243,7 @@ function HomeScreen(props) {
 
                                         {/* Page details with image */}
 
-                                        <View style={{ marginTop: RFPercentage(2.8), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                        <View style={styles.pageDetailsWithImageContainer}>
                                             <TouchableOpacity activeOpacity={0.5}>
                                                 <Image style={{ width: RFPercentage(6), height: RFPercentage(6) }} source={item.dpImageSource} />
                                             </TouchableOpacity>
@@ -278,10 +273,10 @@ function HomeScreen(props) {
                         :
 
                         // Subscription
-                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(1) }}>
+                        <View style={styles.subscriptionsContainer}>
 
                             {/*Horizental Profiles Cart */}
-                            <View style={{ marginTop: RFPercentage(2), flexDirection: 'row', width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
+                            <View style={styles.horizentalProfileCartContainer}>
                                 <ScrollView horizontal={true} style={{ width: '100%', backgroundColor: Colors.white }}>
 
                                     {subsCartData.map((item, i) => (
@@ -367,6 +362,127 @@ const styles = StyleSheet.create({
         width: RFPercentage(0.5),
         height: RFPercentage(0.5),
         borderRadius: RFPercentage(10)
+    },
+    navBarContainer: {
+        position: 'absolute',
+        bottom: RFPercentage(5.4),
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    topButtonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: RFPercentage(3),
+        width: "90%",
+        height: RFPercentage(7),
+        backgroundColor: Colors.twoButtons,
+        borderRadius: RFPercentage(10)
+    },
+    scrollViewContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: RFPercentage(1)
+    },
+    feedContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: RFPercentage(1)
+    },
+    feedSubContainer: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    feedHorizentalScroll: {
+        marginTop: RFPercentage(3),
+        width: '100%',
+        backgroundColor: Colors.white
+    },
+    feedScrollSubContainer: {
+        width: "70%",
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    feedHorizentalCartMainContainer: {
+        marginLeft: RFPercentage(2),
+        marginBottom: RFPercentage(3),
+        width: '100%',
+        alignSelf: 'center'
+    },
+    feedHorizentalCartSubContainer: {
+        marginTop: RFPercentage(-5),
+        flexDirection: 'row',
+        width: '90%',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    thumbnailOfVideo: {
+        overflow: 'hidden',
+        borderRadius: RFPercentage(2),
+        marginTop: RFPercentage(5),
+        alignSelf: 'center',
+        width: '100%',
+        height: RFPercentage(22)
+    },
+    viewsAndEyeIconContainer: {
+        flexDirection: 'row',
+        position: 'absolute',
+        top: RFPercentage(2),
+        left: RFPercentage(2),
+        borderRadius: RFPercentage(3),
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: RFPercentage(12),
+        height: RFPercentage(4.2)
+    },
+    emptyViewForBackgroundOpacity: {
+        borderRadius: RFPercentage(3),
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        left: 0,
+        bottom: 0,
+        backgroundColor: "rgba(0,0,0,0.1)"
+    },
+    viewsText: {
+        fontSize: RFPercentage(1.6),
+        color: Colors.white,
+        marginLeft: RFPercentage(0.8),
+        fontWeight: '800'
+    },
+    pageDetailsWithImageContainer: {
+        marginTop: RFPercentage(1.6),
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    subscriptionsContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: RFPercentage(1)
+    },
+    horizentalProfileCartContainer: {
+        marginTop: RFPercentage(2),
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    feedVideoThumbnailContainer: {
+        overflow: 'hidden',
+        borderRadius: RFPercentage(2),
+        marginTop: RFPercentage(5),
+        alignSelf: 'center',
+        width: '100%',
+        height: RFPercentage(30)
     }
 })
 

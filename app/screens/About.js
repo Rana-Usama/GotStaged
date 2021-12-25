@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, Platform, TouchableOpacity, StyleSheet } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';

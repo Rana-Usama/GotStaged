@@ -1,9 +1,8 @@
-import React, { useState, useCallback } from 'react';
-import { View, Image, ImageBackground, TouchableOpacity, Text, ScrollView, Dimensions, Modal } from 'react-native'
+import React, { useState } from 'react';
+import { View, Image, TouchableOpacity, Text, ScrollView, Dimensions, Modal, StyleSheet } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Entypo } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider'
@@ -129,7 +128,7 @@ function AdvertisementScreen(props) {
             <ScrollView style={{ flex: 1, width: '100%' }} >
                 <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                    <View style={{ width: '90%', justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'center', marginTop: RFPercentage(3) }} >
+                    <View style={styles.addDisplayTextConatiner} >
                         <Text style={{ fontSize: RFPercentage(2.5), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                             Ad Display
                         </Text>
@@ -152,7 +151,7 @@ function AdvertisementScreen(props) {
                     {/* Pickers */}
 
                     {pickerData.map((item, i) => (
-                        <View key={i} style={{ marginTop: RFPercentage(3), width: '90%', alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
+                        <View key={i} style={styles.pickerContainer}>
                             <View style={{ alignSelf: 'flex-start', flexDirection: 'row', marginTop: i == 2 ? RFPercentage(6) : 0 }}>
                                 <Text style={{ fontSize: RFPercentage(2.3), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                                     {item.title}
@@ -160,11 +159,11 @@ function AdvertisementScreen(props) {
                             </View>
                             <ReactNativeCrossPicker
                                 modalTextStyle={{ color: Colors.black }}
-                                mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(6.5), marginTop: RFPercentage(3) }}
-                                modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
+                                mainComponentStyle={styles.mainComponentStyle}
+                                modalComponentStyle={styles.modalComponentStyle}
                                 iconComponent={iconComponent}
                                 placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
-                                modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
+                                modalTextStyle={styles.modalTextStyle}
                                 items={i == 0 ? items : items2}
                                 setItem={i == 0 ? setItem : setItem2} selectedItem={i == 0 ? selectedItem : selectedItem2}
                                 placeholder={item.placeholder}
@@ -174,7 +173,7 @@ function AdvertisementScreen(props) {
                     ))}
 
                     {/* Meter */}
-                    <View style={{ marginTop: RFPercentage(7), flexDirection: 'row', alignSelf: 'center', width: '90%', justifyContent: 'flex-start', alignItems: 'center' }} >
+                    <View style={styles.meterConatiner} >
                         <View style={{ width: '55%' }} >
                             <Text style={{ color: Colors.black, fontSize: RFPercentage(1.9), lineHeight: RFPercentage(3) }} >
                                 Congratulations! Your Audience Selection is great.
@@ -186,12 +185,12 @@ function AdvertisementScreen(props) {
                     </View>
 
                     {/* Price Selector */}
-                    <View style={{ width: '90%', justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'center', marginTop: RFPercentage(6) }} >
+                    <View style={styles.priceSelectorConatiner} >
                         <Text style={{ fontSize: RFPercentage(2.5), fontWeight: Platform.OS == 'ios' ? '600' : 'bold', color: Colors.black }} >
                             Select Price
                         </Text>
                     </View>
-                    <View style={{ alignSelf: 'center', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: RFPercentage(1) }} >
+                    <View style={styles.rangeLineConatiner} >
                         <Text style={{ fontSize: RFPercentage(3), fontWeight: 'bold', color: Colors.black }} >
                             ${sliderValue.toFixed()}
                         </Text>
@@ -225,11 +224,11 @@ function AdvertisementScreen(props) {
                         </View>
                         <ReactNativeCrossPicker
                             modalTextStyle={{ color: Colors.black }}
-                            mainComponentStyle={{ width: "100%", borderWidth: 0, backgroundColor: "#FAFAFA", height: RFPercentage(6.5), marginTop: RFPercentage(3) }}
-                            modalComponentStyle={{ borderRadius: RFPercentage(2.3), backgroundColor: Colors.white, borderColor: Colors.primary, borderWidth: RFPercentage(0.3) }}
+                            mainComponentStyle={styles.mainComponentStyle}
+                            modalComponentStyle={styles.modalComponentStyle}
                             iconComponent={iconComponent}
                             placeholderStyle={{ color: "black", fontSize: RFPercentage(2) }}
-                            modalTextStyle={{ color: Colors.black, fontSize: RFPercentage(2.4), fontWeight: 'bold', bottom: RFPercentage(1.8) }}
+                            modalTextStyle={styles.modalTextStyle}
                             items={items3}
                             setItem={setItem3} selectedItem={selectedItem3}
                             placeholder='3 Days'
@@ -237,7 +236,7 @@ function AdvertisementScreen(props) {
                         />
                     </View>
 
-                    <View style={{ width: '90%', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row', marginTop: RFPercentage(2.8) }} >
+                    <View style={styles.yourAddContainer} >
                         <EvilIcons name="exclamation" style={{ fontSize: RFPercentage(2.6) }} color="#5E5E5E" />
                         <Text style={{ color: '#5E5E5E', fontSize: RFPercentage(1.9), marginLeft: RFPercentage(1) }} >
                             Your ad will reach 5k person each day
@@ -245,7 +244,7 @@ function AdvertisementScreen(props) {
                     </View>
 
                     {/*Proceed Button */}
-                    <View style={{ width: "100%", alignItems: "center", marginTop: RFPercentage(3), marginBottom: RFPercentage(10) }}>
+                    <View style={styles.proceedeButtonContainer}>
                         <MyAppButton
                             title="Proceed"
                             padding={RFPercentage(1.4)}
@@ -261,7 +260,7 @@ function AdvertisementScreen(props) {
                     {/* Model */}
                     <Modal visible={pickerModel} transparent={true}>
                         <View style={{ justifyContent: "center", flex: 1, height: height, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.6)" }} >
-                            <View style={{ alignSelf: 'center', alignItems: "center", justifyContent: 'flex-start', borderRadius: RFPercentage(2), backgroundColor: Colors.white, width: "90%", height: RFPercentage(75) }} >
+                            <View style={styles.modalSubContainer} >
                                 <Image style={{ width: '97%', height: RFPercentage(31), marginTop: RFPercentage(2) }} source={require('../../assets/images/card.png')} />
                                 {/* Input Fields */}
                                 {inputField.map((item, i) => (
@@ -288,7 +287,7 @@ function AdvertisementScreen(props) {
                                     </View>
                                 ))}
                                 {/* exp and cw */}
-                                <View style={{ width: '96%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: RFPercentage(3) }}>
+                                <View style={styles.expAndCwTextContainer}>
                                     {/* saperator */}
                                     <View style={{ backgroundColor: Colors.newInputFieldBorder, width: RFPercentage(0.2), height: RFPercentage(6) }} />
                                     <View style={{ position: 'absolute', left: RFPercentage(5), justifyContent: 'center', alignItems: 'center' }}>
@@ -332,5 +331,91 @@ function AdvertisementScreen(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    addDisplayTextConatiner: {
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        alignSelf: 'center',
+        marginTop: RFPercentage(3)
+    },
+    pickerContainer: {
+        marginTop: RFPercentage(3),
+        width: '90%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center'
+    },
+    mainComponentStyle: {
+        width: "100%",
+        borderWidth: 0,
+        backgroundColor: "#FAFAFA",
+        height: RFPercentage(6.5),
+        marginTop: RFPercentage(3)
+    },
+    modalComponentStyle: {
+        borderRadius: RFPercentage(2.3),
+        backgroundColor: Colors.white,
+        borderColor: Colors.primary,
+        borderWidth: RFPercentage(0.3)
+    },
+    modalTextStyle: {
+        color: Colors.black,
+        fontSize: RFPercentage(2.4),
+        fontWeight: 'bold',
+        bottom: RFPercentage(1.8)
+    },
+    meterConatiner: {
+        marginTop: RFPercentage(7),
+        flexDirection: 'row',
+        alignSelf: 'center',
+        width: '90%',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    priceSelectorConatiner: {
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        alignSelf: 'center',
+        marginTop: RFPercentage(6)
+    },
+    rangeLineConatiner: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginTop: RFPercentage(1)
+    },
+    yourAddContainer: {
+        width: '90%',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginTop: RFPercentage(2.8)
+    },
+    proceedeButtonContainer: {
+        width: "100%",
+        alignItems: "center",
+        marginTop: RFPercentage(3),
+        marginBottom: RFPercentage(10)
+    },
+    modalSubContainer: {
+        alignSelf: 'center',
+        alignItems: "center",
+        justifyContent: 'flex-start',
+        borderRadius: RFPercentage(2),
+        backgroundColor: Colors.white,
+        width: "90%", height: RFPercentage(75)
+    },
+    expAndCwTextContainer: {
+        width: '96%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: RFPercentage(3)
+    }
+})
 
 export default AdvertisementScreen;

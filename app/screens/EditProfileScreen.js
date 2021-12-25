@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Image, ImageBackground, ScrollView, TextInput, Platform, KeyboardAvoidingView } from 'react-native'
+import { View, Text, TouchableOpacity, Image, ImageBackground, ScrollView, TextInput, Platform, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -78,17 +78,17 @@ function EditProfileScreen(props) {
             <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
                 {/* NavBar */}
-                <View style={{ marginTop: RFPercentage(5), width: '90%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                <View style={styles.navBarContainer}>
                     <TouchableOpacity onPress={() => props.navigation.openDrawer()} activeOpacity={0.5} style={{ position: 'absolute', left: 0 }}>
                         <Image style={{ width: RFPercentage(2.5), height: RFPercentage(2.4) }} source={require('../../assets/images/notification.png')} />
                     </TouchableOpacity>
-                    <Text style={{ fontSize: RFPercentage(2.5), fontWeight: '700', color: Colors.black }}>
+                    <Text style={styles.editProfileText}>
                         Edit Profile
                     </Text>
                 </View>
 
                 {/* Image */}
-                <TouchableOpacity onPress={pickImage} activeOpacity={0.7} style={{ overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(6), backgroundColor: Colors.twoButtons, width: RFPercentage(19), height: RFPercentage(19), borderRadius: RFPercentage(20) }}>
+                <TouchableOpacity onPress={pickImage} activeOpacity={0.7} style={styles.profileImageContainer}>
                     {image ?
                         <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
                         :
@@ -104,7 +104,7 @@ function EditProfileScreen(props) {
                 <ScrollView style={{ flex: 1, width: '100%' }} >
                     <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                        <View style={{ marginTop: RFPercentage(6), justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                        <View style={styles.inputFieldsContainer}>
                             {inputField.map((item, i) => (
                                 <View key={i} style={{ marginLeft: RFPercentage(0.8) }} >
                                     <Text style={{ marginTop: !i == 0 ? RFPercentage(2) : RFPercentage(0), color: Colors.black, fontSize: RFPercentage(2), fontWeight: '500', marginBottom: RFPercentage(1.2) }}>
@@ -129,7 +129,7 @@ function EditProfileScreen(props) {
                         </View>
 
                         {/* Gender selection buttons */}
-                        <View style={{ width: '88%', justifyContent: 'center', alignItems: 'flex-start', marginTop: RFPercentage(3) }}>
+                        <View style={styles.selectionButtonsContainer}>
                             <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '500', }}>
                                 Gender
                             </Text>
@@ -150,7 +150,7 @@ function EditProfileScreen(props) {
                             </View>
                         </View>
 
-                        <View style={{ width: '88%', justifyContent: 'center', alignItems: 'flex-start', marginTop: RFPercentage(3) }}>
+                        <View style={styles.selectionButtonsContainer}>
                             <Text style={{ color: Colors.black, fontSize: RFPercentage(2), fontWeight: '500', }}>
                                 Date of Birth
                             </Text>
@@ -182,5 +182,42 @@ function EditProfileScreen(props) {
         </KeyboardAvoidingView>
     );
 }
+
+const styles = StyleSheet.create({
+    navBarContainer: {
+        marginTop: RFPercentage(5),
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    editProfileText: {
+        fontSize: RFPercentage(2.5),
+        fontWeight: '700',
+        color: Colors.black
+    },
+    profileImageContainer: {
+        overflow: 'hidden',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: RFPercentage(6),
+        backgroundColor: Colors.twoButtons,
+        width: RFPercentage(19),
+        height: RFPercentage(19),
+        borderRadius: RFPercentage(20)
+    },
+    inputFieldsContainer: {
+        marginTop: RFPercentage(6),
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%'
+    },
+    selectionButtonsContainer: {
+        width: '88%',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        marginTop: RFPercentage(3)
+    }
+})
 
 export default EditProfileScreen;
